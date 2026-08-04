@@ -1,0 +1,1 @@
+sprite_index = spr_room_change_button
