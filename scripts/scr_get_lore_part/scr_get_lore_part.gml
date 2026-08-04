@@ -1,0 +1,12 @@
+function scr_get_lore_part(room_id){
+	switch(room_id){
+		case rm_hall_entrada:
+			return "Definitivamente aconteceu alguma coisa aqui, preciso entender onde estou. Esse texto é somente encheção de linguiça para descobrir se a passagem de linha está funcionando corretamente, vou mudar isso depois."
+		case rm_cozinha:
+			return "Humm, prato delicioso"
+		case rm_sala_jogos:
+			return "Tem coisa pra colocar aqui hein."
+		default:
+			return "Essa sala não deveria ter papel de lore, tira daí por favor, abençoado."
+	}
+}

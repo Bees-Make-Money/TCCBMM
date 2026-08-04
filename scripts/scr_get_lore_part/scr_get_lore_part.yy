@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_get_lore_part",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_get_lore_part",
+  "parent":{
+    "name":"Lore",
+    "path":"folders/Scripts/Lore.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
