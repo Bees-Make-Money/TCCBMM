@@ -1,7 +1,9 @@
-if(!can_close) exit
+if (!can_close) {
+	return
+}
 
-var dentro = point_in_rectangle(mouse_x, mouse_y, bbox_left, bbox_top, bbox_right, bbox_bottom)
+var dentro = collision_point(mouse_x, mouse_y, id, true, false)
 
-if(!dentro){
+if (!dentro) {
 	instance_destroy()
 }

@@ -1,3 +1,3 @@
-if(!can_close){
-can_close = true
+if (!can_close) {
+	can_close = true
 }
