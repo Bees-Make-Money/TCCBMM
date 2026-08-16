@@ -60,6 +60,7 @@
     {"id":{"name":"obj_room_option_button","path":"objects/obj_room_option_button/obj_room_option_button.yy",},},
     {"id":{"name":"obj_screen_credits","path":"objects/obj_screen_credits/obj_screen_credits.yy",},},
     {"id":{"name":"obj_testes","path":"objects/obj_testes/obj_testes.yy",},},
+    {"id":{"name":"obj_transition_text","path":"objects/obj_transition_text/obj_transition_text.yy",},},
     {"id":{"name":"rm_cozinha","path":"rooms/rm_cozinha/rm_cozinha.yy",},},
     {"id":{"name":"rm_creditos","path":"rooms/rm_creditos/rm_creditos.yy",},},
     {"id":{"name":"rm_hall_entrada","path":"rooms/rm_hall_entrada/rm_hall_entrada.yy",},},
