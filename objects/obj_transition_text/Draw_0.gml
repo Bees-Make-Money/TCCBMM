@@ -1,5 +1,4 @@
-/// Draw Event
-draw_set_alpha(alpha);
+draw_set_font(fnt_testes)
 draw_rectangle_color(0, 0, room_width, room_height, c_black, c_black, c_black, c_black, false);
 
 draw_set_alpha(text_alpha);
