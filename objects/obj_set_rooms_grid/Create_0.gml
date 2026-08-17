@@ -1,0 +1,1 @@
+global.room_grid = ds_grid_create(room_width div 48, room_height div 48)
