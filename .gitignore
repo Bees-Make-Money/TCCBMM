@@ -60,3 +60,11 @@ Temporary Items
 
 # GMRT build directory
 Build
+
+# Leftover files from failed merges/patches
+*.orig
+*.bak
+
+# Local editor config
+.vscode/
+.gmedit/
