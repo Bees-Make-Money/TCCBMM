@@ -125,7 +125,6 @@
     {"id":{"name":"spr_room_change_button","path":"sprites/spr_room_change_button/spr_room_change_button.yy",},},
     {"id":{"name":"spr_room_change_menu","path":"sprites/spr_room_change_menu/spr_room_change_menu.yy",},},
     {"id":{"name":"spr_room_option_mask","path":"sprites/spr_room_option_mask/spr_room_option_mask.yy",},},
-    {"id":{"name":"spr_safe_menu","path":"sprites/spr_safe_menu/spr_safe_menu.yy",},},
     {"id":{"name":"spr_sc_creedits","path":"sprites/spr_sc_creedits/spr_sc_creedits.yy",},},
     {"id":{"name":"spr_sc_exit","path":"sprites/spr_sc_exit/spr_sc_exit.yy",},},
     {"id":{"name":"spr_sprite","path":"sprites/spr_sprite/spr_sprite.yy",},},
