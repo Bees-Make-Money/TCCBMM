@@ -1,3 +1,5 @@
+scr_increment_room_visits(room)
+
 if(instance_exists(obj_room_change_button)){
  instance_destroy(obj_room_change_button)
 }
