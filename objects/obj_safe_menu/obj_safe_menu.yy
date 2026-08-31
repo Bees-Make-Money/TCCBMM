@@ -33,7 +33,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_missing_texture",
+    "path":"sprites/spr_missing_texture/spr_missing_texture.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

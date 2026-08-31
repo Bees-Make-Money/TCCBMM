@@ -1,3 +1,6 @@
+instance_deactivate_object(obj_creditos)
+instance_deactivate_object(obj_play_button)
+instance_deactivate_object(obj_exit)
 alpha = 0;
 fade_in = false;
 next_room = rm_hall_entrada;
