@@ -2,6 +2,9 @@ global.previous_room = noone
 global.interaction_locked = false
 global.room_visits = {}
 global.safe_solved = false
+global.inventory_items = array_create(10, noone)
+global.selected_inventory_slot = noone
+global.active_item_menu_buttons = []
 scr_build_room_map()
 
 window_set_fullscreen(true)

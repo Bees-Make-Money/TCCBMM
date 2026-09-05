@@ -2,6 +2,8 @@ draw_set_alpha(0.8)
 draw_set_colour(c_black)
 draw_rectangle(0, 0, room_width, room_height, false)
 
+draw_set_alpha(1)
+
 var tempo = current_time * 0.002;
 var tom_azul = 80 + sin(tempo) * 35;
 

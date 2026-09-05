@@ -1,4 +1,4 @@
-if(global.interaction_locked) exit
+if(global.interaction_locked && !(instance_exists(obj_room_change_menu))) exit
 
 if(instance_exists((obj_room_change_menu))){
 	instance_destroy(obj_room_change_menu)

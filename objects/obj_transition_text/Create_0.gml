@@ -7,8 +7,7 @@ next_room = rm_hall_entrada;
 fade_speed = 0.05;
 transition_texts = [
     "Bees Make Money apresenta:",
-    "We can not scape",
-    "Bem-vindo ao Jogo",
+	"Carbon Breath",
 	"20/10/2000",
 ];
 current_text_index = 0; 
