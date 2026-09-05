@@ -1,6 +1,6 @@
 {
   "$GMSprite":"v2",
-  "%Name":"spr_room_change_button_2",
+  "%Name":"spr_inventory_button",
   "bboxMode":0,
   "bbox_bottom":109,
   "bbox_left":0,
@@ -12,27 +12,27 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"814a8b39-c0c2-40f2-8ca7-a4f9aaa792e8","name":"814a8b39-c0c2-40f2-8ca7-a4f9aaa792e8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"1fd7ee11-b13f-45c1-8635-a30f9a1db213","name":"1fd7ee11-b13f-45c1-8635-a30f9a1db213","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":110,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"b66280a6-50f3-4b5f-bb64-1050a250b848","blendMode":0,"displayName":"default","isLocked":false,"name":"b66280a6-50f3-4b5f-bb64-1050a250b848","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"48c2efc2-4a83-4235-84bd-5d426183edfe","blendMode":0,"displayName":"default","isLocked":false,"name":"48c2efc2-4a83-4235-84bd-5d426183edfe","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
-  "name":"spr_room_change_button_2",
+  "name":"spr_inventory_button",
   "nineSlice":{
     "$GMNineSliceData":"",
-    "bottom":31,
+    "bottom":10,
     "enabled":true,
     "guideColour":[4294902015,4294902015,4294902015,4294902015,],
     "highlightColour":1728023040,
     "highlightStyle":0,
-    "left":38,
+    "left":14,
     "resourceType":"GMNineSliceData",
     "resourceVersion":"2.0",
-    "right":41,
+    "right":14,
     "tileMode":[
       0,
       0,
@@ -40,7 +40,7 @@
       0,
       0,
     ],
-    "top":32,
+    "top":2,
   },
   "origin":4,
   "parent":{
@@ -52,7 +52,7 @@
   "resourceVersion":"2.0",
   "sequence":{
     "$GMSequence":"v1",
-    "%Name":"spr_room_change_button_2",
+    "%Name":"spr_inventory_button",
     "autoRecord":true,
     "backdropHeight":768,
     "backdropImageOpacity":0.5,
@@ -76,7 +76,7 @@
       "resourceType":"KeyframeStore<MomentsEventKeyframe>",
       "resourceVersion":"2.0",
     },
-    "name":"spr_room_change_button_2",
+    "name":"spr_inventory_button",
     "playback":1,
     "playbackSpeed":30.0,
     "playbackSpeedType":0,
@@ -88,8 +88,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"814a8b39-c0c2-40f2-8ca7-a4f9aaa792e8","path":"sprites/spr_room_change_button_2/spr_room_change_button_2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"a98026ad-ef0f-4e44-9ddb-a27f6331b297","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"1fd7ee11-b13f-45c1-8635-a30f9a1db213","path":"sprites/spr_inventory_button/spr_inventory_button.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"49ed6940-a8a2-4052-80cd-00eeab7dac61","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

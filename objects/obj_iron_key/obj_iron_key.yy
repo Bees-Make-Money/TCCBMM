@@ -8,8 +8,8 @@
   "name":"obj_iron_key",
   "overriddenProperties":[],
   "parent":{
-    "name":"Holdables",
-    "path":"folders/Objects/Holdables.yy",
+    "name":"Pickables",
+    "path":"folders/Objects/Pickables.yy",
   },
   "parentObjectId":null,
   "persistent":false,
