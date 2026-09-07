@@ -1,7 +1,7 @@
 var bx = x - btn_w/2;
 var by = y - btn_h/2;
 
-hover = point_in_rectangle(mouse_x, mouse_y, bx, by, bx+btn_w, by+btn_h);
+hover = point_in_rectangle(mouse_x, mouse_y, bx, by, bx+ btn_w, by+btn_h);
 
 draw_set_color(hover ? make_color_rgb(38, 26, 10) : cor_painel);
 draw_rectangle(bx, by, bx+btn_w, by+btn_h, false);

@@ -3,14 +3,7 @@ senha_correta  = "3110";
 tentativas     = 0;
 max_digitos    = 4;
 
-dicas = [
-    "Algo foi queimado neste dia...",
-    "Data histórica da resistência",
-    "Comemorado principalmente no USA",
-    "Acontece em outubro"
-];
 
-dica = dicas[0];
 
 // Posição do painel
 px = display_get_gui_width()  / 2 - 140;
@@ -47,7 +40,7 @@ verificar_senha = function() {
         tentativas++;
         entrada = "";
         var idx = min(tentativas - 1, array_length(dicas) - 1);
-        dica = dicas[idx];
+       
 
         // Ativa o flash
         flash_ativo = true;

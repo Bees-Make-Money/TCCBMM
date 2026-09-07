@@ -1,10 +1,9 @@
 doc_x = display_get_gui_width()  / 2 - 140;
 doc_y = display_get_gui_height() / 2 - 160;
-doc_w = 280;
-metade_h = 150;
-
-texto_visivel = "__ __ 1 0";
-texto_oculto  = "3 1 __ __"; // declarado para uso futuro — não renderizado aqui
+doc_w = 400;
+metade_h = 200;
+texto_visivel = "a figura mais famosa está em primeiro";
+texto_oculto  = "triangulo é o primeiro caractere, depois o I."; // declarado para uso futuro — não renderizado aqui
 
 // Gera o rasgo uma única vez (fixo entre frames)
 num_segs = 20;

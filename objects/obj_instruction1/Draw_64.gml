@@ -4,7 +4,7 @@ var cy = display_get_gui_height() / 2;
 // Fundo do manual (papel amarelado)
 draw_set_color(make_color_rgb(232, 223, 200));
 draw_set_alpha(0.97);
-draw_rectangle(cx-170, cy-160, cx+170, cy+160, false);
+draw_rectangle(cx-170, cy-160, cx+200, cy+180, false);
 draw_set_alpha(1);
 
 // Linha vermelha de margem (estética de caderno)

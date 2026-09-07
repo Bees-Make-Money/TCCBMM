@@ -139,10 +139,3 @@ draw_set_font(fnt_testes);
 draw_set_halign(fa_center);
 draw_text(confirm_x + confirm_w/2, conf_y + 14, "C O N F I R M A R");
 
-// ── DICA ──
-if (true) {
-    draw_set_color(cor_dica);
-    draw_set_font(fnt_testes);
-    draw_set_halign(fa_center);
-    draw_text_ext(px + pw/2, conf_y + 58, dica, -1, pw - 30);
-}

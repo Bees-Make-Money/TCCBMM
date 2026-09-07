@@ -39,7 +39,7 @@ draw_text(doc_x+14, doc_y+108, texto_visivel);
 draw_set_color(make_color_rgb(120, 90, 50));
 draw_set_halign(fa_center);
 draw_set_font(fnt_testes);
-draw_text(cx, doc_y+132, "[ parte do documento ilegível ]");
+draw_text(cx, doc_y+132, "Nós os irmãos Shwizz, estaremos indo no jantar para resolver a negociação da seita");
 
 // ── BORDA RASGADA (fixa, gerada no Create) ──
 draw_set_color(make_color_rgb(160, 130, 90));
