@@ -1,3 +1,8 @@
+if (instance_number(obj_game_manager) > 1) {
+    instance_destroy();
+    exit;
+}
+
 global.previous_room = noone
 global.interaction_locked = false
 global.room_visits = {}

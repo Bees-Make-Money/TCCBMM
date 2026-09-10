@@ -1,1 +1,3 @@
-active = not active
+if (global.interaction_locked) exit;
+
+active = !active;

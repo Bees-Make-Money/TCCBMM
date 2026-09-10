@@ -17,7 +17,9 @@ function scr_get_available_rooms() {
         for (var i = 0; i < array_length(neighbors); i++) {
             var target = neighbors[i];
 
-            if (back != noone && string(back.target) == string(target)) continue;
+            if (back != noone && room_get_name(back.target) == room_get_name(target)) {
+                continue;
+            }
 
             array_push(forward, {
                 target: target,
