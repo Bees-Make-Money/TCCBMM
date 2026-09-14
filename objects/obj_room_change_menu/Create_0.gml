@@ -15,17 +15,6 @@ var _start_y = menu_title_y + 60;
 var _spacing_y = 45;
 var _current_index = 0;
 
-if (_back_option != noone) {
-    var _btn_y = _start_y + (_current_index * _spacing_y);
-    var _btn = instance_create_layer(x, _btn_y, "Menu", obj_room_option_button);
-    
-    _btn.target_room = _back_option.target;
-    _btn.room_label  = "Voltar para " + _back_option.label; 
-    _btn.depth = depth - 10;
-    
-    array_push(option_buttons, _btn);
-    _current_index++;
-}
 
 var _total_forward = array_length(_forward_options);
 for (var i = 0; i < _total_forward; i++) {
@@ -36,6 +25,18 @@ for (var i = 0; i < _total_forward; i++) {
     
     _btn.target_room = _data.target;
     _btn.room_label  = "Ir para " + _data.label; 
+    _btn.depth = depth - 10;
+    
+    array_push(option_buttons, _btn);
+    _current_index++;
+}
+
+if (_back_option != noone) {
+    var _btn_y = _start_y + (_current_index * _spacing_y);
+    var _btn = instance_create_layer(x, _btn_y, "Menu", obj_room_option_button);
+    
+    _btn.target_room = _back_option.target;
+    _btn.room_label  = "De onde vim: " + _back_option.label; 
     _btn.depth = depth - 10;
     
     array_push(option_buttons, _btn);

@@ -11,8 +11,8 @@
   "name":"obj_inventory_option_select",
   "overriddenProperties":[],
   "parent":{
-    "name":"Clickables",
-    "path":"folders/Objects/Clickables.yy",
+    "name":"Inventory",
+    "path":"folders/Objects/Interface/Inventory.yy",
   },
   "parentObjectId":null,
   "persistent":false,
