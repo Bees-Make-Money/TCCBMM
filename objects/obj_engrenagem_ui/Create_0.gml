@@ -1,80 +1,85 @@
-px = display_get_gui_width()  / 2 - 270;
-py = display_get_gui_height() / 2 - 210;
-pw = 540;
-ph = 420;
+// ═══════════════════════════════════════════════════════════════
+// CREATE EVENT - Configuração de Proporção e Dados do Puzzle
+// ═══════════════════════════════════════════════════════════════
+w = 816;
+h = 624;
 
-cor_ouro   = make_color_rgb(200, 150, 30);
-cor_borda  = make_color_rgb(122, 92, 32);
-cor_painel = make_color_rgb(26, 18, 8);
-cor_verde  = make_color_rgb(64, 168, 64);
-cor_verm   = make_color_rgb(200, 64, 32);
+// Paleta Industrial Elegante
+c_fundo      = make_color_rgb(14, 10, 6);
+c_painel     = make_color_rgb(22, 16, 10);
+c_borda      = make_color_rgb(120, 95, 60);
+c_ouro       = make_color_rgb(212, 162, 78);
+c_verde      = make_color_rgb(60, 180, 90);
+c_verm       = make_color_rgb(190, 50, 50);
+c_metal      = make_color_rgb(140, 145, 150);
+c_metal_esc  = make_color_rgb(45, 48, 52);
 
-// Aba ativa: 0 = engrenagens, 1 = fiacao
-aba = 0;
-aba_eng_ok  = false;
-aba_fio_ok  = false;
-
-// Porta visual
-porta_x = px + pw - 120;
-porta_y = py + 80;
-porta_w = 80;
-porta_h = 140;
-
-// ── ENGRENAGENS ──
-eng = [
-    { ex: px+90,  ey: py+190, r: 38, dentes: 12, label: "A", conectada: false },
-    { ex: px+220, ey: py+140, r: 28, dentes: 8,  label: "B", conectada: false },
-    { ex: px+330, ey: py+190, r: 22, dentes: 6,  label: "C", conectada: false },
-    { ex: px+220, ey: py+250, r: 22, dentes: 6,  label: "D", conectada: false }
-];
-
-conexoes_eng = [
-    { de: 0, para: 1, ok: false },
-    { de: 1, para: 2, ok: false },
-    { de: 1, para: 3, ok: false }
-];
-eng_ok = 0;
-
-// ── FIAÇÃO ──
-// Pinos superiores (fonte) e terminais inferiores (destino)
-nos = [
-    { nx: px+70,  ny: py+110, label: "P1", ligado: false },
-    { nx: px+190, ny: py+110, label: "P2", ligado: false },
-    { nx: px+310, ny: py+110, label: "P3", ligado: false },
-    { nx: px+70,  ny: py+230, label: "T1", ligado: false },
-    { nx: px+190, ny: py+230, label: "T2", ligado: false },
-    { nx: px+310, ny: py+230, label: "T3", ligado: false }
-];
-
-conexoes_fio = [
-    { de: 0, para: 3, ok: false },
-    { de: 1, para: 4, ok: false },
-    { de: 2, para: 5, ok: false }
-];
-fio_ok = 0;
-
-// Arrasto
+// Controle Geral de Interface
+aba = 0; // 0 = Transmissão Mecânica, 1 = Circuito Elétrico
 arrastando = false;
-arr_origem = -1;
-arr_x = 0;
-arr_y = 0;
-raio_no = 16;
+arr_from = "";
+mouse_xx = 0;
+mouse_yy = 0;
 
-// Animação das engrenagens
+// ==========================================
+// SISTEMA I: ENGRENAGENS (Layout Centrado)
+// ==========================================
+c_trav = true;
+f_trav = true;
+eng_resolvido = false;
 angulo = 0;
+conexoes_eng = [];
 
-// Instruções
-instrucao = "Leia o Manual";
+// Lista de Engrenagens conforme o Manual
+engrenagens = [
+    { id: "A",   x: 100, y: 300, r: 42, d: 14, tipo: "motor" },
+    { id: "B",   x: 190, y: 300, r: 32, d: 10, tipo: "normal" },
+    { id: "C",   x: 275, y: 300, r: 26, d: 7,  tipo: "trava" },
+    { id: "D",   x: 350, y: 300, r: 22, d: 6,  tipo: "normal" },
+    { id: "E",   x: 435, y: 300, r: 30, d: 9,  tipo: "normal" },
+    { id: "F",   x: 520, y: 300, r: 22, d: 6,  tipo: "trava" },
+    { id: "G",   x: 605, y: 300, r: 28, d: 8,  tipo: "normal" },
+    { id: "H",   x: 275, y: 160, r: 20, d: 5,  tipo: "aux" },
+    { id: "I",   x: 520, y: 160, r: 20, d: 5,  tipo: "aux" },
+    { id: "OUT", x: 710, y: 430, r: 38, d: 10, tipo: "saida" }
+];
 
-// Botão voltar
-btn_voltar_x = px + pw/2 - 80;
-btn_voltar_y = py + ph - 38;
-btn_voltar_w = 160;
-btn_voltar_h = 30;
+// ==========================================
+// SISTEMA II: PAINEL ELÉTRICO
+// ==========================================
+tensao_out = 0;
+fusivel_queimado = false;
+curto_circuito = false;
+ele_resolvido = false;
+conexoes_ele = [];
 
-// Abas
-aba_eng_x = px;
-aba_fio_x = px + pw/2;
-aba_y     = py - 32;
-aba_w     = pw/2;
-aba_h     = 32;
+// Esquemático de Componentes Elétricos
+nos_ele = [
+    { id: "BAT-A", x: 80,  y: 150, tipo: "bat", v: 6 },
+    { id: "BAT-B", x: 80,  y: 230, tipo: "bat", v: 4 },
+    { id: "BAT-C", x: 80,  y: 310, tipo: "bat", v: 3 },
+    { id: "BAT-D", x: 80,  y: 390, tipo: "bat", v: 2 },
+    { id: "D1",    x: 220, y: 150, tipo: "diodo" },
+    { id: "R1",    x: 220, y: 230, tipo: "res" },
+    { id: "C1",    x: 220, y: 310, tipo: "cap" },
+    { id: "R2",    x: 220, y: 390, tipo: "res" },
+    { id: "J1",    x: 370, y: 190, tipo: "no" },
+    { id: "J2",    x: 370, y: 350, tipo: "no" },
+    { id: "Q1",    x: 490, y: 190, tipo: "trans" },
+    { id: "Q2",    x: 490, y: 350, tipo: "trans" },
+    { id: "J3",    x: 600, y: 270, tipo: "no" },
+    { id: "F1",    x: 680, y: 220, tipo: "fusivel" },
+    { id: "K1",    x: 680, y: 320, tipo: "rele" },
+    { id: "OUT",   x: 755, y: 270, tipo: "saida" },
+    { id: "GND-1", x: 370, y: 470, tipo: "gnd" },
+    { id: "GND-2", x: 680, y: 430, tipo: "gnd" }
+];
+
+function get_eng_idx(_id) {
+    for(var i=0; i<array_length(engrenagens); i++) { if(engrenagens[i].id == _id) return i; }
+    return -1;
+}
+function get_ele_idx(_id) {
+    for(var i=0; i<array_length(nos_ele); i++) { if(nos_ele[i].id == _id) return i; }
+    return -1;
+}

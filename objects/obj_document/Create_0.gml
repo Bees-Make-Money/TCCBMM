@@ -1,13 +1,15 @@
-doc_x = display_get_gui_width()  / 2 - 140;
-doc_y = display_get_gui_height() / 2 - 160;
-doc_w = 400;
-metade_h = 200;
-texto_visivel = "a figura mais famosa está em primeiro";
-texto_oculto  = "triangulo é o primeiro caractere, depois o I."; // declarado para uso futuro — não renderizado aqui
+w = 816;
+h = 624;
 
-// Gera o rasgo uma única vez (fixo entre frames)
-num_segs = 20;
-rasgo = array_create(num_segs);
-for (var i = 0; i < num_segs; i++) {
-    rasgo[i] = irandom_range(-7, 7);
-}
+pag_atual = 0;
+pag_max = 2;
+
+c_fundo = make_color_rgb(15, 10, 10);
+c_papel = make_color_rgb(245, 240, 230);
+c_tinta = make_color_rgb(60, 45, 45);
+c_oculto = make_color_rgb(180, 40, 40); // Cor da mensagem secreta
+
+bx1 = 150;
+by1 = 80;
+bx2 = 666;
+by2 = 544;

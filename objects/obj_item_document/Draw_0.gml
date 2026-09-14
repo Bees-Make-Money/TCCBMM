@@ -1,33 +1,19 @@
-var bx = x - btn_w/2;
-var by = y - btn_h/2;
+var cx = x + (largura / 2) - 100;
+var cy = y + (altura / 2);
+var l = (largura / 2) * escala;
+var a = (altura / 2) * escala;
 
-hover = point_in_rectangle(mouse_x, mouse_y, bx, by, bx+ btn_w, by+btn_h);
+// Corpo do Envelope
+draw_set_color(c_envelope);
+draw_rectangle(cx - l, cy - a, cx + l, cy + a, false);
+draw_set_color(c_contorno);
+draw_rectangle(cx - l, cy - a, cx + l, cy + a, true);
 
-draw_set_color(hover ? make_color_rgb(38, 26, 10) : cor_painel);
-draw_rectangle(bx, by, bx+btn_w, by+btn_h, false);
+// Aba do Envelope
+draw_triangle(cx - l, cy - a, cx + l, cy - a, cx, cy - (10 * escala), true);
 
-draw_set_color(hover ? cor_ouro_cl : cor_borda);
-draw_rectangle(bx, by, bx+btn_w, by+btn_h, true);
-
-// Cantos decorativos
-draw_set_color(cor_ouro);
-draw_set_alpha(0.7);
-draw_line(bx+4,       by+4,       bx+12,        by+4);
-draw_line(bx+4,       by+4,       bx+4,         by+12);
-draw_line(bx+btn_w-4, by+4,       bx+btn_w-12,  by+4);
-draw_line(bx+btn_w-4, by+4,       bx+btn_w-4,   by+12);
-draw_line(bx+4,       by+btn_h-4, bx+12,        by+btn_h-4);
-draw_line(bx+4,       by+btn_h-4, bx+4,         by+btn_h-12);
-draw_line(bx+btn_w-4, by+btn_h-4, bx+btn_w-12,  by+btn_h-4);
-draw_line(bx+btn_w-4, by+btn_h-4, bx+btn_w-4,   by+btn_h-12);
-draw_set_alpha(1);
-
-draw_set_color(make_color_rgb(58, 42, 8));
-draw_line(bx+18, by+8, bx+btn_w-18, by+8);
-
-draw_set_color(hover ? cor_ouro_cl : cor_ouro);
-draw_set_halign(fa_center);
-draw_set_valign(fa_middle);
-draw_set_font(fnt_testes);
-draw_text(x, y, "LER ARQUIVO");
-draw_set_valign(fa_top);
+// Selo de cera
+draw_set_color(c_selo);
+draw_circle(cx, cy - (10 * escala), 12 * escala, false);
+draw_set_color(c_contorno);
+draw_circle(cx, cy - (10 * escala), 12 * escala, true);

@@ -10,8 +10,8 @@
   "name":"obj_btn_changeroom",
   "overriddenProperties":[],
   "parent":{
-    "name":"meet_room",
-    "path":"folders/Objects/Second_floor/meet_room.yy",
+    "name":"bussines_room1",
+    "path":"folders/Objects/Second_floor/bussines_room1.yy",
   },
   "parentObjectId":null,
   "persistent":false,

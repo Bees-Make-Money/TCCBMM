@@ -1,56 +1,46 @@
+// ═══════════════════════════════════════════════════════════════
+// GLOBAL LEFT RELEASED - Conexão do Cabo/Correia
+// ═══════════════════════════════════════════════════════════════
+if (!arrastando) return;
+arrastando = false;
+
 var mx = device_mouse_x_to_gui(0);
 var my = device_mouse_y_to_gui(0);
+var target = "";
 
-if (!arrastando) exit;
-
-// ── Soltar em engrenagem ──
 if (aba == 0) {
-    for (var i = 0; i < array_length(eng); i++) {
-        if (i == arr_origem) continue;
-        var e = eng[i];
-        if (point_in_circle(mx, my, e.ex, e.ey, e.r + 6)) {
-            for (var f = 0; f < array_length(conexoes_eng); f++) {
-                var c = conexoes_eng[f];
-                if (!c.ok) {
-                    if ((c.de == arr_origem && c.para == i) ||
-                        (c.de == i && c.para == arr_origem)) {
-                        conexoes_eng[f].ok      = true;
-                        eng[c.de].conectada     = true;
-                        eng[c.para].conectada   = true;
-                        eng_ok++;
-                        if (eng_ok == 1) instrucao = "Prossiga com o Manual.";
-                        if (eng_ok == 2) instrucao = "Continue o concerto";
-                    }
-                }
+    for(var i=0; i<array_length(engrenagens); i++) {
+        var e = engrenagens[i];
+        if (point_distance(mx, my, e.x, e.y) <= e.r) { target = e.id; break; }
+    }
+    
+    if (target != "" && target != arr_from) {
+        var existe = false;
+        for(var c=0; c<array_length(conexoes_eng); c++) {
+            var p = conexoes_eng[c];
+            if ((p[0] == arr_from && p[1] == target) || (p[0] == target && p[1] == arr_from)) {
+                existe = true; break;
             }
-            break;
         }
+        if (!existe) array_push(conexoes_eng, [arr_from, target]);
+    }
+} else {
+    for(var i=0; i<array_length(nos_ele); i++) {
+        var n = nos_ele[i];
+        if (point_distance(mx, my, n.x, n.y) <= 22) { target = n.id; break; }
+    }
+    
+    if (target != "" && target != arr_from) {
+        // Regra do Diodo D1: Bloqueia fluxo invertido (D1 -> BAT-A é recusado)
+        if (arr_from == "D1" && target == "BAT-A") return;
+        
+        var existe = false;
+        for(var c=0; c<array_length(conexoes_ele); c++) {
+            var p = conexoes_ele[c];
+            if ((p[0] == arr_from && p[1] == target) || (p[0] == target && p[1] == arr_from)) {
+                existe = true; break;
+            }
+        }
+        if (!existe) array_push(conexoes_ele, [arr_from, target]);
     }
 }
-
-// ── Soltar em nó de fiação ──
-if (aba == 1) {
-    for (var i = 0; i < array_length(nos); i++) {
-        if (i == arr_origem) continue;
-        var n = nos[i];
-        if (point_in_circle(mx, my, n.nx, n.ny, raio_no)) {
-            for (var f = 0; f < array_length(conexoes_fio); f++) {
-                var c = conexoes_fio[f];
-                if (!c.ok) {
-                    if ((c.de == arr_origem && c.para == i) ||
-                        (c.de == i && c.para == arr_origem)) {
-                        conexoes_fio[f].ok  = true;
-                        nos[c.de].ligado    = true;
-                        nos[c.para].ligado  = true;
-                        fio_ok++;
-                        if (fio_ok < 3) instrucao = "Conclua o processo seguindo o manual";
-                    }
-                }
-            }
-            break;
-        }
-    }
-}
-
-arrastando = false;
-arr_origem = -1;

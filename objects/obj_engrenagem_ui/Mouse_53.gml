@@ -1,46 +1,33 @@
+// ═══════════════════════════════════════════════════════════════
+// GLOBAL LEFT PRESSED - Seleção por Clique de Mouse
+// ═══════════════════════════════════════════════════════════════
 var mx = device_mouse_x_to_gui(0);
 var my = device_mouse_y_to_gui(0);
 
-// ── Clique nas abas ──
-if (point_in_rectangle(mx, my, aba_eng_x, aba_y, aba_eng_x+aba_w, aba_y+aba_h)) {
-    aba = 0;
-    exit;
-}
-if (point_in_rectangle(mx, my, aba_fio_x, aba_y, aba_fio_x+aba_w, aba_y+aba_h)) {
-    aba = 1;
-    exit;
+// Alternância de Abas
+if (my >= 16 && my <= 52) {
+    if (mx >= 180 && mx <= 390) { aba = 0; return; }
+    if (mx >= 410 && mx <= 620) { aba = 1; return; }
 }
 
-// ── Botão voltar ──
-if (point_in_rectangle(mx, my, btn_voltar_x, btn_voltar_y,
-    btn_voltar_x+btn_voltar_w, btn_voltar_y+btn_voltar_h)) {
-    instance_destroy();
-    exit;
-}
+arrastando = false;
+arr_from = "";
 
-// ── Aba engrenagens ──
 if (aba == 0) {
-    for (var i = 0; i < array_length(eng); i++) {
-        var e = eng[i];
-        if (point_in_circle(mx, my, e.ex, e.ey, e.r + 6)) {
+    for(var i=0; i<array_length(engrenagens); i++) {
+        var e = engrenagens[i];
+        if (point_distance(mx, my, e.x, e.y) <= e.r) {
             arrastando = true;
-            arr_origem = i;
-            arr_x = mx;
-            arr_y = my;
+            arr_from = e.id;
             break;
         }
     }
-}
-
-// ── Aba fiação ──
-if (aba == 1) {
-    for (var i = 0; i < array_length(nos); i++) {
-        var n = nos[i];
-        if (point_in_circle(mx, my, n.nx, n.ny, raio_no)) {
+} else {
+    for(var i=0; i<array_length(nos_ele); i++) {
+        var n = nos_ele[i];
+        if (point_distance(mx, my, n.x, n.y) <= 22) {
             arrastando = true;
-            arr_origem = i;
-            arr_x = mx;
-            arr_y = my;
+            arr_from = n.id;
             break;
         }
     }

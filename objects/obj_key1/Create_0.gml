@@ -2,6 +2,7 @@ entrada        = "";
 senha_correta  = "3110";
 tentativas     = 0;
 max_digitos    = 4;
+dicas = [];
 
 
 
@@ -35,7 +36,7 @@ verificar_senha = function() {
     if (entrada == senha_correta) {
         obj_door1.bloqueada = false;
        instance_destroy();
-        room_goto(rm_sala_negocios_1);
+        room_goto(rm_sala_negocios_2);
     } else {
         tentativas++;
         entrada = "";
