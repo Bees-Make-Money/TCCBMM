@@ -148,10 +148,10 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"rm_sala_negocios_1","path":"rooms/rm_sala_negocios_1/rm_sala_negocios_1.yy",},},
-    {"roomId":{"name":"rm_sala_reunioes","path":"rooms/rm_sala_reunioes/rm_sala_reunioes.yy",},},
     {"roomId":{"name":"rm_interface","path":"rooms/rm_interface/rm_interface.yy",},},
+    {"roomId":{"name":"rm_sala_negocios_1","path":"rooms/rm_sala_negocios_1/rm_sala_negocios_1.yy",},},
     {"roomId":{"name":"rm_hall_entrada","path":"rooms/rm_hall_entrada/rm_hall_entrada.yy",},},
+    {"roomId":{"name":"rm_sala_reunioes","path":"rooms/rm_sala_reunioes/rm_sala_reunioes.yy",},},
     {"roomId":{"name":"rm_sala","path":"rooms/rm_sala/rm_sala.yy",},},
     {"roomId":{"name":"rm_portas_inferior","path":"rooms/rm_portas_inferior/rm_portas_inferior.yy",},},
     {"roomId":{"name":"rm_varanda_superior","path":"rooms/rm_varanda_superior/rm_varanda_superior.yy",},},
