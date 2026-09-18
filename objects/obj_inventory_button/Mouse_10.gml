@@ -1,1 +1,2 @@
 sprite_index = spr_inventory_button_2
+window_set_cursor(cr_handpoint)

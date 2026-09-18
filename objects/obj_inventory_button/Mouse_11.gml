@@ -1,1 +1,2 @@
 sprite_index = spr_inventory_button
+window_set_cursor(cr_default)

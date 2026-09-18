@@ -1,1 +1,2 @@
 sprite_index = spr_room_change_button
+window_set_cursor(cr_default)
