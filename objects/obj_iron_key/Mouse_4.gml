@@ -1,5 +1,4 @@
-event_inherited();
+if (global.interaction_locked) exit;
 
-if (!instance_exists(id)) {
-    global.iron_key_taken = true;
-}
+global.iron_key_taken = true;
+event_inherited();

@@ -1,0 +1,1 @@
+//Impede o sprite de aparecer (pq não tem o draw_self()).

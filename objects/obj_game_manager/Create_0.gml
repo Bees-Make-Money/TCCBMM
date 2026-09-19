@@ -10,6 +10,7 @@ global.safe_solved = false
 global.inventory_items = array_create(10, noone)
 global.selected_inventory_slot = noone
 global.active_item_menu_buttons = []
+global.iron_key_taken = false
 scr_build_room_map()
 
 window_set_fullscreen(true)
