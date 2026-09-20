@@ -1,4 +1,4 @@
-function scr_get_available_rooms() {
+	function scr_get_available_rooms() {
     var back = noone;
 
     if (global.previous_room != noone && global.previous_room != room) {

@@ -16,5 +16,6 @@ current_page = 0;
 text_index = 0;   
 text_speed = 0.5; 
 display_text = ""; 
-
+speaker = "";
+Ccolor = c_white;
 depth = -100;

@@ -1,3 +1,6 @@
+speaker = "Detetive Corrompido"
+text_color = c_red
+
 dialog_lines = [
 	"Esse Objeto não faz absolutamente nada...",
 	"É apenas algo transitório, enquanto não conseguimos criar o cenário."
