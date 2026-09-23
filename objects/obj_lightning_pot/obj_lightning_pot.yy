@@ -1,21 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"obj_item_pickup",
+  "%Name":"obj_lightning_pot",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":10,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":11,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_item_pickup",
+  "name":"obj_lightning_pot",
   "overriddenProperties":[],
   "parent":{
     "name":"Pickables",
     "path":"folders/Objects/Pickables.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_item_pickup",
+    "path":"objects/obj_item_pickup/obj_item_pickup.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"Item_pickup",
-    "path":"sprites/Item_pickup/Item_pickup.yy",
+    "name":"spr_lightining_pot",
+    "path":"sprites/spr_lightining_pot/spr_lightining_pot.yy",
   },
   "spriteMaskId":null,
   "visible":true,
