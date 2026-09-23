@@ -19,7 +19,8 @@ scr_build_room_map()
 global.flags = {
     statue_inspected: false, 
     statue_solved: false,    
-    library_unlocked: false  
+    library_unlocked: false,
+	slide_puzzle_solved: false
 };
 
 global.room_locks = {};
