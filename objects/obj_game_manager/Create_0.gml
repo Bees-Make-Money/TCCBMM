@@ -20,7 +20,8 @@ global.flags = {
     statue_inspected: false, 
     statue_solved: false,    
     library_unlocked: false,
-	slide_puzzle_solved: false
+	slide_puzzle_solved: false,
+	pot_chosen: false
 };
 
 global.room_locks = {};
