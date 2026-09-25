@@ -11,6 +11,7 @@ if (global.selected_item != "") {
     }
     
     global.selected_item = ""; 
+	global.selected_inventory_slot = -1;
     exit; 
 }
 if(array_length(dialog_lines) > 0){

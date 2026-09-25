@@ -7,3 +7,4 @@ text_color = c_white;
 required_item = ""; 
 on_item_success = -1;
 on_interact = -1;
+on_statue_item_use = -1;

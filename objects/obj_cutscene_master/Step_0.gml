@@ -22,7 +22,43 @@ if(!instance_exists(obj_dialog_box)){
 		}
 	break;
 	
-	//Aqui a gente adiciona o controle de cutscenes de outras salas.
+	case (rm_hall_entrada):
+		if (global.flags.pot_chosen){
+			if (step == 0){
+				dialog_lines = ["Você não era tão esperto quanto eu esperava...", "É uma pena.", "Adeus."];
+				scr_show_dialog(dialog_lines, "???", c_red);
+				step++;
+			}
+			else if (step == 1){
+				with (obj_statue) { 
+					image_alpha -= 0.02; 
+                        
+                    if (image_alpha <= 0) {
+						sprite_index = spr_sprite;
+                        image_index = 0; // Garante que começa do primeiro frame
+                        image_speed = 0; // Mantém a animação pausada por enquanto
+                        image_alpha = 1; // Restaura a opacidade para 100%
+                            
+                        other.step++; 
+                        }
+                    }
+			}
+			else if (step == 2){
+				with (obj_statue) {
+					image_speed = 1; // Velocidade normal da animação    
+                    // Checa se o frame atual é o último frame do sprite
+                    if (image_index >= image_number - 1) {
+						image_speed = 0; // Pausa no último frame
+                        other.step++;
+                        }
+                    }
+			}
+			else if (step == 3){
+				instance_create_depth(0, 0, -9999, obj_death);
+				instance_destroy();
+			}		
+		}
+	break;
 	
 	default:
 		scr_show_dialog(["Quanto mais eu entro no hotel, mais estranho ele fica."], "Detetive", c_white);
