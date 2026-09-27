@@ -1,19 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_item_document",
+  "%Name":"obj_tabua_solta",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_item_document",
+  "name":"obj_tabua_solta",
   "overriddenProperties":[],
   "parent":{
-    "name":"bussines_room2",
-    "path":"folders/Objects/Second_floor/bussines_room2.yy",
+    "name":"bussines_room3",
+    "path":"folders/Objects/Second_floor/bussines_room3.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_clickable",
+    "path":"objects/obj_clickable/obj_clickable.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
