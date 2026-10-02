@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_missing_texture",
-    "path":"sprites/spr_missing_texture/spr_missing_texture.yy",
+    "name":"spr_golden_statue",
+    "path":"sprites/spr_golden_statue/spr_golden_statue.yy",
   },
   "spriteMaskId":null,
   "visible":true,

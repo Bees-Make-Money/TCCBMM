@@ -34,10 +34,17 @@ if(!instance_exists(obj_dialog_box)){
 					image_alpha -= 0.02; 
                         
                     if (image_alpha <= 0) {
-						sprite_index = spr_sprite;
+						var sx = image_xscale;
+						var sy = image_yscale;
+						var bottom = bbox_bottom; 
+						
+						sprite_index = spr_human_statue;
                         image_index = 0; // Garante que começa do primeiro frame
                         image_speed = 0; // Mantém a animação pausada por enquanto
                         image_alpha = 1; // Restaura a opacidade para 100%
+						image_xscale = sx;
+						image_yscale = sy;
+						y += bottom - bbox_bottom;
                             
                         other.step++; 
                         }
