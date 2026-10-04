@@ -14,7 +14,10 @@ global.selected_inventory_slot = noone
 global.active_item_menu_buttons = []
 global.iron_key_taken = false
 global.selected_item = "";
+global.lens_attached = false;
 scr_build_room_map()
+
+
 
 global.flags = {
     statue_inspected: false, 
@@ -33,4 +36,6 @@ variable_struct_set(global.room_locks, string(rm_biblioteca), {
     req_flag: "library_unlocked", 
     msg: "A porta desta sala está trancada... como posso abrí-la?"
 });
+variable_struct_set(global.flags, "gear_panel_solved", false);
+variable_struct_set(global.flags, "wiring_fixed", false);
 
