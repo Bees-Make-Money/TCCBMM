@@ -24,7 +24,8 @@ global.flags = {
     statue_solved: false,    
     library_unlocked: false,
 	slide_puzzle_solved: false,
-	pot_chosen: false
+	pot_chosen: false,
+	third_puzzle_room_solved: false
 };
 
 global.room_locks = {};
@@ -36,6 +37,4 @@ variable_struct_set(global.room_locks, string(rm_biblioteca), {
     req_flag: "library_unlocked", 
     msg: "A porta desta sala está trancada... como posso abrí-la?"
 });
-variable_struct_set(global.flags, "gear_panel_solved", false);
-variable_struct_set(global.flags, "wiring_fixed", false);
 
