@@ -5,7 +5,7 @@ if (won) {
     global.flags.slide_puzzle_solved = true;
 	
 	var sprite_pote = object_get_sprite(obj_tooth_pot);
-	var largura_pote = sprite_get_width(sprite_pote);
+	var largura_pote = sprite_get_width(spr_tooth_pot);
     var distancia = 2 * largura_pote;
     var centro = 408;
 

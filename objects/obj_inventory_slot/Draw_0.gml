@@ -1,7 +1,8 @@
 draw_self();
 
 var _item = global.inventory_items[slot_index];
-
+image_xscale = 48 / sprite_get_width(_item);
+image_yscale = 48 / sprite_get_height(_item);
 if (_item != noone) {
     draw_sprite(_item.sprite, 0, x, y);
 }

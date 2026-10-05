@@ -14,8 +14,6 @@ if (global.selected_item != "") {
         dialog_lines = ["Você se mostrou digno de adentrar o hotel.", "Uma pena que não será tão bom quanto você imagina..."];
         scr_show_dialog(dialog_lines, "???", c_red);
         
-        instance_create_layer(x, y + 80, "Instances", obj_iron_key);
-        
         exit;
     }
     
