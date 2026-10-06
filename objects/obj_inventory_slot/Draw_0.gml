@@ -1,10 +1,18 @@
 draw_self();
 
 var _item = global.inventory_items[slot_index];
-image_xscale = 48 / sprite_get_width(_item);
-image_yscale = 48 / sprite_get_height(_item);
 if (_item != noone) {
-    draw_sprite(_item.sprite, 0, x, y);
+  
+    var _sprite = _item.sprite; 
+    
+    if (sprite_exists(_sprite)) {
+        var _sw = sprite_get_width(_sprite);
+        var _sh = sprite_get_height(_sprite);
+        
+        var _scale = min(48 / _sw, 48 / _sh); // coloca a maior escala que não deixa o objeto distorcer
+        
+        draw_sprite_ext(_sprite, 0, x, y, _scale, _scale, 0, c_white, 1); // desenha o sprite com a escala definida
+    }
 }
 
 if (global.selected_inventory_slot == slot_index) {

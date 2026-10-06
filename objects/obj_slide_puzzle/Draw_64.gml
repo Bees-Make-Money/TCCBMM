@@ -34,7 +34,7 @@ if (alpha_text > 0) {
     draw_set_halign(fa_center);
     draw_set_valign(fa_middle);
     
-    draw_text_transformed(_gui_w / 2, _gui_h / 2, "Test Drive...", 3, 3, 0); 
+    draw_text_transformed(_gui_w / 2, _gui_h / 2, "Test Drive - J.P", 3, 3, 0);
     
     var _bw = 80;
     var _bh = 50;
