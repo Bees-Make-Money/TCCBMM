@@ -12,8 +12,8 @@
   "name":"obj_slide_puzzle",
   "overriddenProperties":[],
   "parent":{
-    "name":"Clickables",
-    "path":"folders/Objects/Clickables.yy",
+    "name":"Interface",
+    "path":"folders/Objects/Interface.yy",
   },
   "parentObjectId":null,
   "persistent":false,

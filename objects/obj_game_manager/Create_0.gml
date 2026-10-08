@@ -2,6 +2,7 @@ if (instance_number(obj_game_manager) > 1) {
     instance_destroy();
     exit;
 }
+randomize();
 window_set_fullscreen(true)
 display_set_gui_size(display_get_width(), display_get_height())
 
