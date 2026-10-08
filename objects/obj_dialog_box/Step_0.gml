@@ -2,7 +2,7 @@ switch(state){
 	
 	case "opening":
 	box_alpha += fade_speed;
-	if(box_alpha <= target_alpha){
+	if(box_alpha >= target_alpha){
 		box_alpha = target_alpha;
 		state = "typing";
 	}

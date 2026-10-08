@@ -2,7 +2,7 @@ image_xscale = 12;
 image_yscale = 8;
 depth = 10; 
 
-global.interaction_locked = true;
+scr_lock();
 
 var _options = scr_get_available_rooms();
 var _back_option = _options.back;

@@ -1,5 +1,5 @@
 depth = -9999;
-global.interaction_locked = true;
+scr_lock();
 
 won = false;
 

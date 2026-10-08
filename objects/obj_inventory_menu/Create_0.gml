@@ -1,5 +1,5 @@
 depth = -10;
-global.interaction_locked = true;
+scr_lock();
 can_close = false;
 
 slot_instances = [];

@@ -1,1 +1,0 @@
-global.interaction_locked = false

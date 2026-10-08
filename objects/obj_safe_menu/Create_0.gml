@@ -1,4 +1,4 @@
-global.interaction_locked = true
+scr_lock();
 can_close = false
 image_xscale = 12
 image_yscale = 8

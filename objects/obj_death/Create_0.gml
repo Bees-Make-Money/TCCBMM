@@ -1,4 +1,4 @@
-global.interaction_locked = true;
+scr_lock();
 depth = -9999;
 
 alpha_fundo = 0;

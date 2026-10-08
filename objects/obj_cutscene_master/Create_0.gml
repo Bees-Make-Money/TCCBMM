@@ -1,2 +1,2 @@
-global.interaction_locked = true;
+scr_lock();
 step = 0;

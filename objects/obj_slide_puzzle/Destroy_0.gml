@@ -1,6 +1,3 @@
-global.interaction_locked = false;
-
-
 if (won) {
     global.flags.slide_puzzle_solved = true;
 	

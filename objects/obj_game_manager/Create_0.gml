@@ -7,6 +7,7 @@ display_set_gui_size(display_get_width(), display_get_height())
 
 global.previous_room = noone
 global.interaction_locked = false
+global.lock_count = 0;
 global.room_visits = {}
 global.safe_solved = false
 global.inventory_items = array_create(10, noone)

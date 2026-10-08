@@ -1,3 +1,4 @@
+scr_lock();
 target_room = noone;
 alpha = 0;
 fade_state = 1;

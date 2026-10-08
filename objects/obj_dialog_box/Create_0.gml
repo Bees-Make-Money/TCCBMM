@@ -19,3 +19,4 @@ display_text = "";
 speaker = "";
 text_color = c_white;
 depth = -100;
+scr_lock();

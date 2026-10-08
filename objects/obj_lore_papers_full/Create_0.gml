@@ -1,4 +1,4 @@
-global.interaction_locked = true;
+scr_lock();
 
 x = room_width/2
 y = room_height/2
