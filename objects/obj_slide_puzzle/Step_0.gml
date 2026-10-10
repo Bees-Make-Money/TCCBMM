@@ -1,3 +1,4 @@
+if(keyboard_check(vk_escape)) {instance_destroy(obj_slide_puzzle)}
 if (puzzle_state == "playing") {
     var _mov = 0;
 

@@ -24,7 +24,7 @@ global.flags = {
     statue_solved: false,
 
     // Puzzle 2 - Quadros (Sclebin)
-
+	golden_key_taken: false,
 
     // Puzzles 3 a 5 (Salas Puzzle - Guimarães)
 

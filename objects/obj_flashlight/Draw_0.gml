@@ -5,6 +5,8 @@ if (not active) {
 	exit
 }
 
+obj_room_change_button.can_click = false;
+obj_inventory_button.can_click = false;
 draw_set_colour(c_black)
 draw_set_alpha(random_range(0.1, 0.2))
 draw_rectangle(0, 0, room_width, room_height, false)

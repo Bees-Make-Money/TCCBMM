@@ -1,4 +1,5 @@
 if (global.interaction_locked) exit;
+if (!can_click) exit;
 
 if (instance_exists(obj_inventory_menu)){
 	instance_destroy(obj_inventory_menu)
