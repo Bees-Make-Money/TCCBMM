@@ -7,7 +7,7 @@ var _key = string(_destino);
 if (variable_struct_exists(global.room_locks, _key)) {
     var _lock_info = variable_struct_get(global.room_locks, _key);
     
-    if (global.flags[$ _lock_info.req_flag] == false) {
+    if (!scr_flag(_lock_info.req_flag)) {
         _can_enter = false;
         _locked_msg = [_lock_info.msg];
     }

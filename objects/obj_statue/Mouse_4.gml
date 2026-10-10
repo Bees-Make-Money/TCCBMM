@@ -9,7 +9,7 @@ if (global.selected_item != "") {
         global.selected_item = "";
         global.selected_inventory_slot = noone; 
         
-        global.flags.statue_solved = true;
+        scr_flag_set("statue_solved");
         
         dialog_lines = ["Você se mostrou digno de adentrar o hotel.", "Uma pena que não será tão bom quanto você imagina..."];
         scr_show_dialog(dialog_lines, "???", c_red);

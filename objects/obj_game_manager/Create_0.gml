@@ -10,20 +10,30 @@ global.previous_room = noone
 global.interaction_locked = false
 global.lock_count = 0;
 global.room_visits = {}
-global.safe_solved = false
 global.inventory_items = array_create(10, noone)
 global.selected_inventory_slot = noone
 global.active_item_menu_buttons = []
-global.iron_key_taken = false
 global.selected_item = "";
 scr_build_room_map()
 
 global.flags = {
-    statue_inspected: false, 
-    statue_solved: false,    
-    endroom_unlocked: false,
-	slide_puzzle_solved: false,
-	pot_chosen: false
+    // Puzzle 1 - Estátua (Sclebin)
+    statue_inspected: false,
+    slide_puzzle_solved: false,
+    pot_chosen: false,
+    statue_solved: false,
+
+    // Puzzle 2 - Quadros (Sclebin)
+
+
+    // Puzzles 3 a 5 (Salas Puzzle - Guimarães)
+
+    // Puzzle 6 - Cofre
+    safe_solved: false,
+    iron_key_taken: false,
+
+    // Puzzle 7 - Biblioteca
+    library_unlocked: false
 };
 
 global.room_locks = {};

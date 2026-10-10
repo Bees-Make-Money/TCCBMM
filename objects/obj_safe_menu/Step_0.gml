@@ -43,7 +43,7 @@ for (var i = 0; i < 4; i++) {
 }
 
 if (is_correct && anim_offset[0] == 0 && anim_offset[1] == 0 && anim_offset[2] == 0 && anim_offset[3] == 0) {
-    global.safe_solved = true;
+    scr_flag_set("safe_solved");
 	if (instance_exists(safe_origin)) {
         safe_origin.solved = true;
 		with(safe_origin){

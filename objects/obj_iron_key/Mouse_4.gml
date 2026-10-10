@@ -1,5 +1,5 @@
 if (global.interaction_locked) exit;
 
 
-global.iron_key_taken = true;
+scr_flag_set("iron_key_taken");
 event_inherited();

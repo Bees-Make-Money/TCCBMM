@@ -3,6 +3,6 @@ speaker = "???"
 text_color = c_red;
 
 on_interact = function(){
-	global.flags.statue_inspected = true;
+	scr_flag_set("statue_inspected");
 }
 

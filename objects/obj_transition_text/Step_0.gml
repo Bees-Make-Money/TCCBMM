@@ -1,7 +1,10 @@
 /// Step Event
 if fade_in {
+	if(keyboard_check(vk_space) && phase < 3){
+		phase = 3;
+	}
     switch(phase) {
-        case 0: // Fade in (escurecer)
+        case 0: // Fade in (Aparece)
             alpha += fade_speed;
             text_alpha = alpha;
             if alpha >= 1 {

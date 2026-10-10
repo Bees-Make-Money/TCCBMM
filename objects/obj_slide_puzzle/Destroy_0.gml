@@ -1,5 +1,5 @@
 if (won) {
-    global.flags.slide_puzzle_solved = true;
+    scr_flag_set("slide_puzzle_solved");
 	
 	var sprite_pote = object_get_sprite(obj_tooth_pot);
 	var largura_pote = sprite_get_width(spr_tooth_pot);
