@@ -4,7 +4,7 @@ if (global.selected_item != "") {
     
     if (global.selected_item == "Pote com Dente") {
         
-        scr_remove_item_from_inventory("Pote com Dente"); 
+        scr_consume_item(ITEM_POTE_DENTE); 
         
         global.selected_item = "";
         global.selected_inventory_slot = noone; 

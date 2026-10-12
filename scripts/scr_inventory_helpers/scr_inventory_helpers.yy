@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_inventory_helpers",
   "parent":{
-    "name":"Paintings Puzzle",
-    "path":"folders/Scripts/Paintings Puzzle.yy",
+    "name":"Inventory",
+    "path":"folders/Scripts/Inventory.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
