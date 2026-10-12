@@ -9,6 +9,8 @@ display_set_gui_size(display_get_width(), display_get_height())
 global.previous_room = noone
 global.interaction_locked = false
 global.lock_count = 0;
+global.debug_stage = 0;
+global.debug_room_index = -1
 global.room_visits = {}
 global.inventory_items = array_create(10, noone)
 global.selected_inventory_slot = noone
@@ -25,6 +27,18 @@ global.flags = {
 
     // Puzzle 2 - Quadros (Sclebin)
 	golden_key_taken: false,
+    corridor_door_unlocked: false,
+    flask_taken: false,
+    meeting_papers_cleared: false,
+    chalice_filled: false,
+    chalice_taken: false,
+    aquarium_red: false,
+    hammer_taken: false,
+    aquarium_broken: false,
+    fish_taken: false,
+    hunger_paper_read: false,
+    paintings_solved: false,
+    chapter2_shown: false,
 
     // Puzzles 3 a 5 (Salas Puzzle - Guimarães)
 

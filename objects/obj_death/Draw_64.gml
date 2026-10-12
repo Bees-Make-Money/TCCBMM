@@ -17,7 +17,7 @@ draw_set_color(c_red);
 draw_text_transformed(_gw / 2, _gh / 2 - 120, texto_exibido, 4, 4, 0);
 
 // Botão de Reiniciar
-if (mostrar_botao) {
+if (mostrar_botao && !retry_clicado) {
     var _bw = 500; // Largura do botão (antes era 260)
     var _bh = 100; // Altura do botão (antes era 60)
     
@@ -28,7 +28,7 @@ if (mostrar_botao) {
     draw_rectangle(_bx, _by, _bx + _bw, _by + _bh, false);
     
     draw_set_color(c_white);
-    draw_text_transformed(_bx + (_bw / 2), _by + (_bh / 2), "Tentar Novamente", 2.5, 2.5, 0);
+    draw_text_transformed(_bx + (_bw / 2), _by + (_bh / 2), texto_botao, 2.5, 2.5, 0);
     
     // Verificação de Clique no Botão
     var _mx = device_mouse_x_to_gui(0);
@@ -36,7 +36,8 @@ if (mostrar_botao) {
     
     if (mouse_check_button_pressed(mb_left)) {
         if (point_in_rectangle(_mx, _my, _bx, _by, _bx + _bw, _by + _bh)) {
-            game_restart();
+            retry_clicado = true;
+			on_retry();
         }
     }
 }

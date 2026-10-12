@@ -1,0 +1,1 @@
+if (is_callable(on_close)) on_close();

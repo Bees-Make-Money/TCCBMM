@@ -9,7 +9,6 @@ scr_set_room_label(rm_hall_entrada, "Hall de Entrada")
 scr_set_room_label(rm_portas_inferior, "Portas Inferiores")
 scr_set_room_label(rm_biblioteca, "Biblioteca")
 scr_set_room_label(rm_puzzle_chave_2, "Sala Puzzle Chave Azul")
-scr_set_room_label(rm_salao_eventos, "Salão")
 scr_set_room_label(rm_sala_negocios_1, "Sala de Negócios U.Min")
 scr_set_room_label(rm_sala_negocios_2, "Sala de Negócios U.Int")
 scr_set_room_label(rm_sala_negocios_3, "Sala de Negócios U.Alt")
@@ -37,7 +36,6 @@ scr_add_connection(rm_varanda_superior, rm_corredor_superior)
 
 scr_add_connection(rm_corredor_superior, rm_sala_reunioes)
 
-scr_add_connection(rm_sala_reunioes, rm_salao_eventos)
 scr_add_connection(rm_sala_reunioes, rm_sala_negocios_1)
 
 scr_add_connection(rm_sala_negocios_1, rm_sala_negocios_2)
