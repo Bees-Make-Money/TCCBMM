@@ -59,6 +59,15 @@ global.flags = {
 	negocios_3_unlocked : false,
 	
 	//Sala de negócios 3
+	console_taken        : false,
+	controller_taken     : false,
+	tv_on                : false,
+	console_connected    : false,
+	controller_connected : false,
+	penalty_won          : false,
+	paper_digit_taken    : false,
+	uv_lens_acquired     : false,
+
 	
 	
 
@@ -96,4 +105,7 @@ variable_struct_set(global.room_locks, string(rm_sala_negocios_3), {
     req_flag: "negocios_3_unlocked",
     msg: "A porta está trancada. O painel ao lado parece controlar a fechadura."
 });
+
+instance_create_depth(0, 0, -8, obj_uv_light);
+
 
