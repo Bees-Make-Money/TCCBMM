@@ -1,3 +1,4 @@
+home_room = room;   // sala onde este texto nasceu: ele só aparece nela
 visible = false;   // nunca se desenha sozinho: quem desenha é o obj_uv_light
 
 if (!variable_instance_exists(id, "hidden_text")) hidden_text = "?";
@@ -30,7 +31,10 @@ for (var i = 0; i < array_length(hidden_lines); i++) {
 text_h = line_h * array_length(hidden_lines);
 
 // desenha o texto SÓ perto da luz, letra por letra, com brilho
-draw_hidden = function(_lx, _ly, _radius) {
+draw_hidden = function(_lx, _ly, _radius, _cfg) {
+    // só desenha na sala onde este texto nasceu
+    if (room != home_room) return;
+
     // luz longe demais do texto: nada a fazer
     var _nx = clamp(_lx, x, x + text_w);
     var _ny = clamp(_ly, y, y + text_h);
@@ -53,14 +57,14 @@ draw_hidden = function(_lx, _ly, _radius) {
             _a = min(1, _a * 1.8);
 
             if (_a > 0) {
-                draw_set_color(glow_col);
+                draw_set_color(_cfg.glow);
                 draw_set_alpha(_a * 0.45);
                 draw_text_transformed(_cx - 1, _cy, _ch, text_scale, text_scale, 0);
                 draw_text_transformed(_cx + 1, _cy, _ch, text_scale, text_scale, 0);
                 draw_text_transformed(_cx, _cy - 1, _ch, text_scale, text_scale, 0);
                 draw_text_transformed(_cx, _cy + 1, _ch, text_scale, text_scale, 0);
 
-                draw_set_color(text_col);
+                draw_set_color(_cfg.text);
                 draw_set_alpha(_a);
                 draw_text_transformed(_cx, _cy, _ch, text_scale, text_scale, 0);
             }
@@ -69,3 +73,5 @@ draw_hidden = function(_lx, _ly, _radius) {
     }
     draw_set_alpha(1);
 }
+   
+

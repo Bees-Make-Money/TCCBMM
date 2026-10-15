@@ -3,22 +3,28 @@ if (!instance_exists(obj_flashlight)) exit;
 if (!obj_flashlight.active) exit;
 if (instance_exists(obj_inventory_menu)) exit;
 
-var _lx = obj_flashlight.light_x;
-var _ly = obj_flashlight.light_y;
-var _r  = min(sprite_get_width(spr_flashlight_light), sprite_get_height(spr_flashlight_light)) / 2 * radius_scale;
+var _lx = obj_flashlight.light_x + light_cdx;
+var _ly = obj_flashlight.light_y + light_cdy;
 
-// brilho violeta sobre a luz
-gpu_set_blendmode(bm_add);
-for (var i = 0; i < 6; i++) {
-    draw_set_alpha(0.06);
-    draw_set_color(make_color_rgb(120, 50, 230));
-    draw_circle(_lx, _ly, _r * (1 - i * 0.14), false);
+// feixe colorido do tamanho da luz original (vale em TODAS as salas)
+draw_set_circle_precision(64);
+var _layers = 14;
+for (var i = 0; i < _layers; i++) {
+    draw_set_color(merge_color(uv_edge, uv_core, i / (_layers - 1)));
+    draw_set_alpha(0.14);
+    draw_circle(_lx, _ly, light_r * (1 - i / _layers), false);
 }
-gpu_set_blendmode(bm_normal);
+draw_set_alpha(1);
 
-// cada texto oculto se desenha só onde a luz passa
+// texto oculto: só nas salas que têm texto oculto nascido nelas
+var _here = false;
 with (obj_hidden_text) {
-    draw_hidden(_lx, _ly, _r);
+    if (variable_instance_exists(id, "home_room") && home_room == room) _here = true;
+}
+if (_here) {
+    with (obj_hidden_text) {
+        draw_hidden(_lx, _ly, other.light_r, other.uv_text);
+    }
 }
 
 draw_set_alpha(1);
