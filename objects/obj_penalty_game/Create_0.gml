@@ -1,3 +1,6 @@
+// o scr_show_dialog precisa desta layer, e a rm_penaltis é uma room nova
+if (!layer_exists("Text_Dialogs")) layer_create(-200, "Text_Dialogs");
+
 gx1 = 278;  gx2 = 538;            // postes
 gy1 = 210;  gy2 = 330;            // travessão e linha do gol
 goal_cx = (gx1 + gx2) / 2;
