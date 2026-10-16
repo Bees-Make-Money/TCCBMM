@@ -11,6 +11,7 @@ global.interaction_locked = false
 global.lock_count = 0;
 global.debug_stage = 0;
 global.debug_room_index = -1
+global.debug_light_off = false
 global.room_visits = {}
 global.inventory_items = array_create(10, noone)
 global.selected_inventory_slot = noone
@@ -28,6 +29,7 @@ global.flags = {
     // Puzzle 2 - Quadros (Sclebin)
 	golden_key_taken: false,
     corridor_door_unlocked: false,
+	meeting_papers_read: false,
     flask_taken: false,
     meeting_papers_cleared: false,
     chalice_filled: false,

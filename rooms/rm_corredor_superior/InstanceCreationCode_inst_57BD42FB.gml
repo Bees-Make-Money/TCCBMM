@@ -1,0 +1,1 @@
+lore_text = "Alimentado seja o ser vazio.";

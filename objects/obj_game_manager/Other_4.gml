@@ -25,3 +25,6 @@ else {
 	instance_destroy(obj_inventory_button);
 	instance_destroy(obj_flashlight);
 }
+if (room == rm_corredor_superior && scr_flag("flask_taken")) {
+    scr_flag_set("meeting_papers_cleared");
+}
