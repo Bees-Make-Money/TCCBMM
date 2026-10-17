@@ -18,3 +18,10 @@ function scr_try_give_item(_sprite, _name) {
     }
     return _added;
 }
+
+function scr_inventory_has_space() {
+    for (var i = 0; i < array_length(global.inventory_items); i++) {
+        if (global.inventory_items[i] == noone) return true;
+    }
+    return false;
+}

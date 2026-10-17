@@ -12,6 +12,7 @@
     {"name":"inst_8C4413","path":"rooms/rm_sala_reunioes/rm_sala_reunioes.yy",},
     {"name":"inst_758654FE","path":"rooms/rm_sala_reunioes/rm_sala_reunioes.yy",},
     {"name":"inst_169C596F","path":"rooms/rm_sala_reunioes/rm_sala_reunioes.yy",},
+    {"name":"inst_2306DD09","path":"rooms/rm_sala_reunioes/rm_sala_reunioes.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -19,6 +20,7 @@
     {"$GMRInstanceLayer":"","%Name":"Menu","depth":100,"effectEnabled":true,"effectType":null,"gridX":48,"gridY":48,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_758654FE","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_758654FE","objectId":{"name":"obj_hotspot_base","path":"objects/obj_hotspot_base/obj_hotspot_base.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.25,"scaleY":6.0416665,"x":740.5,"y":244.5,},
         {"$GMRInstance":"v4","%Name":"inst_169C596F","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_169C596F","objectId":{"name":"obj_hotspot_base","path":"objects/obj_hotspot_base/obj_hotspot_base.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.1458334,"scaleY":1.1458334,"x":432.0,"y":96.0,},
+        {"$GMRInstance":"v4","%Name":"inst_2306DD09","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2306DD09","objectId":{"name":"obj_mensagem_inventario","path":"objects/obj_mensagem_inventario/obj_mensagem_inventario.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
       ],"layers":[],"name":"Menu","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Buttons","depth":200,"effectEnabled":true,"effectType":null,"gridX":48,"gridY":48,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"Buttons","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":300,"effectEnabled":true,"effectType":null,"gridX":48,"gridY":48,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[

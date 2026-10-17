@@ -1,0 +1,1 @@
+detection_range = 3

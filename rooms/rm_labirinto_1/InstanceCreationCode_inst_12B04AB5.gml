@@ -1,1 +1,1 @@
-detection_range = 1;;
+detection_range = 2;

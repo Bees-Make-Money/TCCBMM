@@ -33,7 +33,7 @@ global.flags = {
     flask_taken: false,
     meeting_papers_cleared: false,
     chalice_filled: false,
-    chalice_taken: false,
+    chalice_spilled: false,
     aquarium_red: false,
     hammer_taken: false,
     aquarium_broken: false,
