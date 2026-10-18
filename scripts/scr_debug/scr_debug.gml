@@ -9,7 +9,7 @@ function scr_debug_paintings_flags() {
         "flask_taken",
         "meeting_papers_cleared",
         "chalice_filled",
-        "chalice_taken",
+        "chalice_spilled",
         "aquarium_red",
         "hammer_taken",
         "aquarium_broken",

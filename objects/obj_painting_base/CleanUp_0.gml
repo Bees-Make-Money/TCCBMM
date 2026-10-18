@@ -1,0 +1,1 @@
+if (anim_playing) scr_unlock();
