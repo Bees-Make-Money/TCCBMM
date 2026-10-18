@@ -17,7 +17,7 @@ die = function(_msg = "Você foi atingido por um projétil.") {
     dead = true;
     var _d = instance_create_depth(0, 0, -9999, obj_death);
     _d.texto = _msg;
-	if(room = rm_labirinto_2) {	obj_countdown.total_seconds = 60; }
+	if(room = rm_labirinto_2) {	obj_maze_countdown.total_seconds = 60; }
     _d.on_retry = function() { scr_change_room(rm_labirinto_1, true); };
 };
 

@@ -28,3 +28,7 @@ else {
 if (room == rm_corredor_superior && scr_flag("flask_taken")) {
     scr_flag_set("meeting_papers_cleared");
 }
+if (room == rm_sala_reunioes && scr_flag("paintings_solved") && !scr_flag("chapter2_shown")) {
+    scr_flag_set("chapter2_shown");
+    instance_create_depth(0, 0, -9999, obj_chapter_title);
+}

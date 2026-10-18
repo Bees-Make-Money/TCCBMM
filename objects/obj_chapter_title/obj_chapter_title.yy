@@ -1,17 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_countdown",
+  "%Name":"obj_chapter_title",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_countdown",
+  "name":"obj_chapter_title",
   "overriddenProperties":[],
   "parent":{
-    "name":"Puzzle_Labirinto",
-    "path":"folders/Objects/Puzzle_Labirinto.yy",
+    "name":"Effects",
+    "path":"folders/Objects/Interface/Effects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

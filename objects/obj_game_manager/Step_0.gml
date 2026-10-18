@@ -35,4 +35,7 @@ if (DEBUG_MODE) {
 			scr_flag_set("statue_inspected", false); // resetando as flags para ser efetivamente uma morte
 		}
 	}
+	if (keyboard_check_pressed(vk_f11)) {
+        scr_add_item_to_inventory(spr_fish, ITEM_PEIXE);
+    }
  }

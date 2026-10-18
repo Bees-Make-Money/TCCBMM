@@ -15,7 +15,8 @@ function scr_debug_paintings_flags() {
         "aquarium_broken",
         "fish_taken",
         "hunger_paper_read",
-        "paintings_solved"
+        "paintings_solved",
+		"chapter2_shown"
     ];
 }
 

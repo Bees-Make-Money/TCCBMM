@@ -65,4 +65,7 @@ variable_struct_set(global.room_locks, string (rm_sala_reunioes), {
 	req_flag: "corridor_door_unlocked",
 	msg: "Essa porta está trancada. Talvez alguma chave secreta a libere?"
 });
-
+variable_struct_set(global.room_locks, string(rm_sala_negocios_1), {
+    req_flag: "paintings_solved",
+    msg: "A porta não abre. Algo não quer que eu passe."
+});

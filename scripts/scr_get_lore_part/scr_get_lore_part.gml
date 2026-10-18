@@ -5,7 +5,7 @@ function scr_get_lore_part(room_id){
 		case rm_varanda_superior:
 			return "Humm, prato delicioso"
 		case rm_corredor_superior:
-			return "Tem coisa pra colocar aqui hein."
+			return "Tente a sala de reuniões novamente."
 		default:
 			return "Essa sala não deveria ter papel de lore, tira daí por favor, abençoado."
 	}

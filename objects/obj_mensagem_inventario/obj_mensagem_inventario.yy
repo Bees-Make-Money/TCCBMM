@@ -10,8 +10,8 @@
   "name":"obj_mensagem_inventario",
   "overriddenProperties":[],
   "parent":{
-    "name":"Interface",
-    "path":"folders/Objects/Interface.yy",
+    "name":"Effects",
+    "path":"folders/Objects/Interface/Effects.yy",
   },
   "parentObjectId":null,
   "persistent":false,

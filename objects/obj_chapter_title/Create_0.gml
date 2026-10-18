@@ -1,0 +1,9 @@
+depth = -9999;
+text = "Capítulo II - Eu não estou sozinho";
+fade_in = 60;      
+hold = 120;        
+fade_out = 60;
+timer = 0;
+alpha = 0;
+title_size = 2.4;   //texto gigante tem tamanho 3.
+title_y = 40;       

@@ -1,15 +1,17 @@
 {
   "$GMObject":"",
-  "%Name":"obj_dark_clawns",
+  "%Name":"obj_corridor_countdown",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_dark_clawns",
+  "name":"obj_corridor_countdown",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Effects",
+    "path":"folders/Objects/Interface/Effects.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -29,10 +31,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_garras_negras",
-    "path":"sprites/spr_garras_negras/spr_garras_negras.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
