@@ -12,7 +12,6 @@ scr_set_room_label(rm_puzzle_chave_2, "Sala Puzzle Chave Azul")
 scr_set_room_label(rm_sala_negocios_1, "Sala de Negócios U.Min")
 scr_set_room_label(rm_sala_negocios_2, "Sala de Negócios U.Int")
 scr_set_room_label(rm_sala_negocios_3, "Sala de Negócios U.Alt")
-scr_set_room_label(rm_sala_negocios_4, "Sala de Negócios U.Max")
 scr_set_room_label(rm_sala_cofre, "Sala do Cofre")
 scr_set_room_label(rm_sala_final, "O segredo")
 
@@ -24,6 +23,8 @@ scr_set_room_label(rm_sala_reunioes, "Sala de Reuniões")
 //----------Conexões Entre as Salas----------
 
 //Primeiro Andar
+scr_add_directed_connection(rm_exterior, rm_hall_entrada)
+
 scr_add_connection(rm_hall_entrada, rm_varanda_superior)
 scr_add_connection(rm_hall_entrada, rm_portas_inferior)
 
@@ -42,7 +43,5 @@ scr_add_connection(rm_sala_negocios_1, rm_sala_negocios_2)
 
 scr_add_connection(rm_sala_negocios_2, rm_sala_negocios_3)
 
-scr_add_connection(rm_sala_negocios_3, rm_sala_negocios_4)
-
-scr_add_connection(rm_sala_negocios_4, rm_sala_cofre)
+scr_add_connection(rm_sala_negocios_3, rm_sala_cofre)
 }
