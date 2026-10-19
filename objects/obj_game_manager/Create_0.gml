@@ -67,6 +67,11 @@ global.flags = {
 	penalty_won          : false,
 	paper_digit_taken    : false,
 	uv_lens_acquired     : false,
+	
+	//Sala do cofre
+	bucket_taken      : false,
+	fire_solved       : false,
+	order_paper_taken : false,
 
 	
 	
