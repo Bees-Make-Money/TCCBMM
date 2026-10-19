@@ -3,7 +3,7 @@ if (!layer_exists("Buttons"))      layer_create(-100, "Buttons");
 if (!layer_exists("Menu"))         layer_create(-150, "Menu");
 if (!layer_exists("Text_Dialogs")) layer_create(-200, "Text_Dialogs");
 
-depth = 500;   // desenha atrás dos itens (o balde)
+depth = -5;   // na frente dos fundos da room, atrás do balde (-7) e do inventário (-10)
 
 // ===================== CONFIGURAÇÃO (mexa aqui) =====================
 // ordem em que as cortinas pegam fogo (0..3, da esquerda para a direita).
