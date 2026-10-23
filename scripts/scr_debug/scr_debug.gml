@@ -1,5 +1,5 @@
 //é um script de testes, para evitar erros uma vez que o projeto está ficando grande.
-#macro DEBUG_MODE true   // mudar para false na versão final
+#macro DEBUG_MODE true
 
 /// Flags do puzzle dos quadros, na ordem em que acontecem.
 function scr_debug_paintings_flags() {
@@ -22,10 +22,9 @@ function scr_debug_paintings_flags() {
 
 /// Salas pelas quais a tecla F4 passa.
 function scr_debug_rooms() {
-    return [rm_hall_entrada, rm_portas_inferior, rm_varanda_superior,
-            rm_corredor_superior, rm_sala_reunioes, rm_labirinto_1, rm_labirinto_2];
+    return [rm_hall_entrada, rm_varanda_superior,
+            rm_corredor_superior, rm_sala_reunioes, rm_labirinto_1, rm_labirinto_2, rm_sala_negocios_1];
 }
-
 /// Liga as primeiras _n flags da lista e desliga as demais.
 function scr_debug_set_paintings_stage(_n) {
     var _list = scr_debug_paintings_flags();
