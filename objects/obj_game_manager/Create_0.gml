@@ -43,6 +43,41 @@ global.flags = {
     chapter2_shown: false,
 
     // Puzzles 3 a 5 (Salas Puzzle - Guimarães)
+	
+	//Sala de Negócios 1
+	
+	
+	
+	//Sala de negócios 2
+	gear_large_taken  : false,
+	gear_medium_taken : false,
+	gear_small_taken  : false,
+	pliers_taken      : false,
+	gear_large_placed  : false,
+	gear_medium_placed : false,
+	gear_small_placed  : false,
+	gear_panel_solved  : false,
+	wiring_fixed        : false, 
+	negocios_3_unlocked : false,
+	
+	//Sala de negócios 3
+	console_taken        : false,
+	controller_taken     : false,
+	tv_on                : false,
+	console_connected    : false,
+	controller_connected : false,
+	penalty_won          : false,
+	paper_digit_taken    : false,
+	uv_lens_acquired     : false,
+	
+	//Sala do cofre
+	bucket_taken      : false,
+	fire_solved       : false,
+	order_paper_taken : false,
+    endroom_unlocked  : false,
+
+	
+	
 
     // Puzzle 6 - Cofre
     safe_solved: false,
@@ -50,6 +85,11 @@ global.flags = {
 
     // Puzzle 7 - Biblioteca
     library_unlocked: false
+	
+	
+
+
+
 };
 
 global.room_locks = {};
@@ -69,3 +109,10 @@ variable_struct_set(global.room_locks, string(rm_sala_negocios_1), {
     req_flag: "paintings_solved",
     msg: "A porta não abre. Algo não quer que eu passe."
 });
+variable_struct_set(global.room_locks, string(rm_sala_negocios_3), {
+    req_flag: "negocios_3_unlocked",
+    msg: "A porta está trancada. O painel ao lado parece controlar a fechadura."
+});
+
+instance_create_depth(0, 0, -8, obj_uv_light);
+

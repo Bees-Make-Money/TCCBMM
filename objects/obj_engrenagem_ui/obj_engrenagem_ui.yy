@@ -12,8 +12,8 @@
   "name":"obj_engrenagem_ui",
   "overriddenProperties":[],
   "parent":{
-    "name":"bussines_room2",
-    "path":"folders/Objects/Second_floor/bussines_room2.yy",
+    "name":"Objetos a serem apagados",
+    "path":"folders/Objects/Second_floor/bussines_room2/Objetos a serem apagados.yy",
   },
   "parentObjectId":null,
   "persistent":false,

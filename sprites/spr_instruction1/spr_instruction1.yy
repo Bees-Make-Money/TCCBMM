@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Second Floor-Sprites",
-    "path":"folders/Sprites/Second Floor-Sprites.yy",
+    "name":"Sprites Inúteis",
+    "path":"folders/Sprites/Second Floor-Sprites/Sprites Inúteis.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
