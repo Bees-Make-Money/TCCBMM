@@ -23,6 +23,7 @@ if (!panel_revealed) {
         if (reveal_dwell >= reveal_frames) {
             panel_revealed = true;
             scr_flag_set("gear_panel_revealed");
+			scr_flag_set("ghosts_solved");   // chegar à sala 3 implica que a sala 2 já foi aberta
             reveal_t = 45;
             scr_show_dialog(["A luz revelou algo na parede: um painel de controle escondido, com uma tampa de madeira."], "Detetive", c_white);
         }

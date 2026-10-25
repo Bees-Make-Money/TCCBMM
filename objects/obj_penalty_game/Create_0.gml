@@ -422,3 +422,14 @@ draw_hud = function() {
         draw_text_transformed(room_width / 2, 410, "Clique para começar", 1, 1, 0);
     }
 }
+// ---------- tela da morte (só a mensagem, sem reiniciar o jogo) ----------
+death_message = "O homem que morreu em pé";
+death_a    = 0;   // fundo preto
+death_idx  = 0;   // letras já mostradas
+death_hold = 0;   // tempo parado com a frase inteira
+
+// recomeço depois da morte: pula a tela inicial e vai direto para o primeiro pênalti
+if (variable_global_exists("penalty_retry") && global.penalty_retry) {
+    global.penalty_retry = false;
+    start_attempt();
+}

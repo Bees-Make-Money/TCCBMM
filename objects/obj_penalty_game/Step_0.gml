@@ -101,12 +101,34 @@ switch (st) {
         }
     break;
 
-    case "lose":
+       case "lose":
         end_timer--;
         if (end_timer <= 0) {
-            var _d = instance_create_depth(0, 0, -9999, obj_death);
-            _d.texto = "O homem que morreu em pé";
-            st = "dead";
+            st = "death_msg";
+            death_a = 0;
+            death_idx = 0;
+            death_hold = 0;
+        }
+    break;
+
+    case "death_msg":
+        if (death_a < 1) {
+            // escurece a tela
+            death_a = min(1, death_a + 0.02);
+        }
+        else if (death_idx < string_length(death_message)) {
+            // digita a frase
+            death_idx += 0.25;
+        }
+        else {
+            // frase inteira na tela: espera um pouco e recomeça SÓ o pênalti
+            death_hold++;
+            if (death_hold >= 150) {
+                global.penalty_retry = true;
+                var _fr = instance_create_depth(0, 0, -9998, obj_fade);
+                _fr.target_room = rm_penaltis;
+                st = "dead";
+            }
         }
     break;
 }
