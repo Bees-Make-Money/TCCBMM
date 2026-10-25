@@ -1,4 +1,5 @@
 if (!tv_is_active()) exit;
+if (!tv_was_active) exit;  
 if (!point_in_rectangle(mouse_x, mouse_y, panel_left, panel_top, panel_left + tv_w, panel_top + tv_h)) exit;
 if (global.interaction_locked || was_locked) exit;
 

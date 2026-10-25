@@ -55,8 +55,8 @@ switch (st) {
         keeper_e = min(1, _e * 1.6);
         keeper_angle = -keeper_side * 75 * keeper_e;
         keeper_arm   = keeper_e;
-        keeper_x = lerp(goal_cx, keeper_hand_x - keeper_side * 35, keeper_e);
-        keeper_y = lerp(gy2, min(gy2, keeper_hand_y + 55), keeper_e);
+        keeper_x = lerp(goal_cx, keeper_end_x, keeper_e);
+        keeper_y = lerp(gy2, keeper_end_y, keeper_e);
         if (keeper_side == 0) keeper_y -= sin(pi * keeper_e) * 10;
 
         if (shot_t >= shot_frames) finish_shot();

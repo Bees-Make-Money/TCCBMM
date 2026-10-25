@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_clock",
-    "path":"sprites/spr_clock/spr_clock.yy",
+    "name":"spr_book",
+    "path":"sprites/spr_book/spr_book.yy",
   },
   "spriteMaskId":null,
   "visible":true,
