@@ -30,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"maze_walls",
-    "path":"sprites/maze_walls/maze_walls.yy",
+    "name":"spr_maze_walls",
+    "path":"sprites/spr_maze_walls/spr_maze_walls.yy",
   },
   "spriteMaskId":null,
   "visible":true,
