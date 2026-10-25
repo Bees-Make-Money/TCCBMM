@@ -71,6 +71,7 @@ global.flags = {
 	penalty_won          : false,
 	paper_digit_taken    : false,
 	uv_lens_acquired     : false,
+	uv_lens_destroyed : false,
 	
 	//Sala do cofre
 	bucket_taken      : false,
