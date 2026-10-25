@@ -35,7 +35,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_clock",
+    "path":"sprites/spr_clock/spr_clock.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
