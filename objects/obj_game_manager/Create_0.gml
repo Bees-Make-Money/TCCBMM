@@ -95,7 +95,7 @@ global.flags = {
 global.room_locks = {};
 variable_struct_set(global.room_locks, string(rm_varanda_superior), {
     req_flag: "statue_solved", 
-    msg: "Devo terminar de resolver esta sala antes de subir"
+    msg: "Devo terminar de resolver este andar antes de subir"
 });
 variable_struct_set(global.room_locks, string(rm_sala_final), {
     req_flag: "endroom_unlocked", 

@@ -1,0 +1,1 @@
+dialog_lines = ["Posso acessar a próxima sala pelo menu de movimentação, aparentemente a porta está destrancada"];

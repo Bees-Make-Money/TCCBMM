@@ -6,12 +6,12 @@ if (won) {
     var distancia = 2 * 48;
     var centro = 408;
 
-    instance_create_layer(centro - distancia, 200, "Instances", obj_lightning_pot);
-    instance_create_layer(centro, 200, "Instances", obj_tooth_pot);
-    instance_create_layer(centro + distancia, 200, "Instances", obj_zelda_pot);
+    instance_create_layer(centro - distancia, 368, "Instances", obj_lightning_pot);
+    instance_create_layer(centro, 368, "Instances", obj_tooth_pot);
+    instance_create_layer(centro + distancia, 368, "Instances", obj_zelda_pot);
 	
-    if (instance_exists(obj_puzzle_doors_paper)){
-        instance_destroy(obj_puzzle_doors_paper);
+    if (instance_exists(obj_slide_puzzle_opener)){
+        instance_destroy(obj_slide_puzzle_opener);
     }
 	instance_create_layer(0, 0, "Instances", obj_cutscene_master)
 }	
