@@ -6,9 +6,11 @@ var _on  = scr_flag("tv_on");
 var _con = scr_flag("console_connected");
 var _ctl = scr_flag("controller_connected");
 
-// ---------------- jogador está com um item selecionado ----------------
-if (global.selected_item != "") {
-    var _item     = global.selected_item;
+// item selecionado (se outro evento limpar a seleção no mesmo clique, usa a lembrada)
+var _selected = global.selected_item;
+if (_selected == "") _selected = last_selected;
+if (_selected != "") {
+    var _item     = _selected;
     var _lines    = ["Humm, parece que isso não está certo."];
     var _consumed = false;
 

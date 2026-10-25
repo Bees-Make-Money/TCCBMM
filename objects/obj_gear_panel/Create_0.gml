@@ -1,5 +1,7 @@
 event_inherited();
-
+vanish_t = -1;
+// puzzle já resolvido antes? então o painel nem existe mais
+if (scr_flag("negocios_3_unlocked")) { instance_destroy(); exit; }
 // ---------- tamanho do painel (e da área clicável) ----------
 panel_w = 432;
 panel_h = 288;
@@ -132,3 +134,9 @@ for (var i = 0; i < array_length(_items); i++) {
         instance_create_layer(0, 0, layer, _items[i][0]);
     }
 }
+panel_revealed = scr_flag("gear_panel_revealed");   // já foi descoberto antes?
+panel_open     = false;   // tampa fechada
+door_t         = 0;       // 0 = tampa fechada, 1 = aberta (anima entre os dois)
+reveal_t       = 0;       // clarão da revelação
+reveal_dwell   = 0;       // frames com a luz em cima do painel
+reveal_frames  = 15;      // quantos frames a luz precisa ficar em cima para revelar

@@ -23,7 +23,7 @@ card_y0  = screen_y + (screen_h - card_h) / 2;
 // ---------- estado ----------
 tv_phase       = "off";   // off, bars, console, message, menu
 menu_ready     = false;
-tv_message     = "escolha bem o seu jogo";
+tv_message     = "17/07/1994";
 msg_index      = 0;
 msg_hold       = 0;
 hover_card     = -1;
@@ -124,3 +124,4 @@ draw_icon_car = function(_cx, _cy, _r) {
     draw_circle(_cx - 15 * _s, _cy + 12 * _s, 2.5 * _s, false);
     draw_circle(_cx + 15 * _s, _cy + 12 * _s, 2.5 * _s, false);
 }
+last_selected = "";   // lembra o item selecionado no passo anterior

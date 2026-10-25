@@ -1,3 +1,4 @@
+last_selected = global.selected_item;
 var _act = tv_is_active();
 
 // aviso quando a TV aparece (só se aparecer enquanto o jogador está na sala)
