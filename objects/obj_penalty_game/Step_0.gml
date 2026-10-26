@@ -86,6 +86,7 @@ switch (st) {
 
             // papel com o dígito misterioso (precisa de 1 slot livre no inventário)
             var _paper = scr_make_paper_sprite(mystery_digit);
+			global.mystery_digit = mystery_digit;
             scr_add_item_to_inventory(_paper, "Papel Misterioso");
 
             scr_show_dialog(["Os portões se abriram... eu estou livre!",

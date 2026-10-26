@@ -81,7 +81,7 @@ else if (tv_phase == "menu") {
             }
             else {
                 // basquete ou carro: a escolha errada
-                instance_create_depth(0, 0, -9999, obj_death);
+               instance_create_depth(0, 0, -9000, obj_tv_death_msg);
             }
             break;
         }

@@ -34,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_safe",
-    "path":"sprites/spr_safe/spr_safe.yy",
+    "name":"spr_missing_texture",
+    "path":"sprites/spr_missing_texture/spr_missing_texture.yy",
   },
   "spriteMaskId":null,
   "visible":true,

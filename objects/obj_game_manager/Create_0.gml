@@ -124,4 +124,5 @@ variable_struct_set(global.room_locks, string(rm_sala_negocios_3), {
 
 
 instance_create_depth(0, 0, -8, obj_uv_light);
+instance_create_depth(0, 0, -9100, obj_item_viewer);
 
