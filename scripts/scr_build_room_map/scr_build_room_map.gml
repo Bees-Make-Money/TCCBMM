@@ -13,7 +13,7 @@ scr_set_room_label(rm_sala_negocios_1, "Sala de Negócios U.Min")
 scr_set_room_label(rm_sala_negocios_2, "Sala de Negócios U.Int")
 scr_set_room_label(rm_sala_negocios_3, "Sala de Negócios U.Alt")
 scr_set_room_label(rm_sala_cofre, "Sala do Cofre")
-scr_set_room_label(rm_sala_final, "O segredo")
+scr_set_room_label(rm_sala_final, "????????")
 
 //Segundo Andar
 scr_set_room_label(rm_varanda_superior, "Varanda Superior")
@@ -28,9 +28,8 @@ scr_add_directed_connection(rm_exterior, rm_hall_entrada)
 scr_add_connection(rm_hall_entrada, rm_varanda_superior)
 scr_add_connection(rm_hall_entrada, rm_portas_inferior)
 
-scr_add_connection(rm_portas_inferior, rm_biblioteca)
+scr_add_connection(rm_portas_inferior, rm_sala_final)
 
-scr_add_connection(rm_biblioteca, rm_puzzle_chave_2)
 
 //Segundo Andar
 scr_add_connection(rm_varanda_superior, rm_corredor_superior)

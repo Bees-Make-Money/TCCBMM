@@ -102,7 +102,7 @@ variable_struct_set(global.room_locks, string(rm_varanda_superior), {
 });
 variable_struct_set(global.room_locks, string(rm_sala_final), {
     req_flag: "endroom_unlocked", 
-    msg: "A porta desta sala está trancada... como posso abrí-la?"
+    msg: "A enerergia dessa sala me assuta... O que será que tem aqui? Ela está trancada."
 });
 variable_struct_set(global.room_locks, string (rm_sala_reunioes), {
 	req_flag: "corridor_door_unlocked",
@@ -121,7 +121,6 @@ variable_struct_set(global.room_locks, string(rm_sala_negocios_3), {
     req_flag: "negocios_3_unlocked",
     msg: "A porta está trancada. O painel ao lado parece controlar a fechadura."
 });
-
 
 instance_create_depth(0, 0, -8, obj_uv_light);
 instance_create_depth(0, 0, -9100, obj_item_viewer);
