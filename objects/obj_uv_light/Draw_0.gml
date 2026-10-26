@@ -1,4 +1,4 @@
-if (!scr_flag("uv_lens_acquired")) exit;
+if (!scr_flag("uv_lens_acquired") || scr_flag("uv_lens_destroyed")) exit;
 if (!instance_exists(obj_flashlight)) exit;
 if (!obj_flashlight.active) exit;
 if (instance_exists(obj_inventory_menu)) exit;

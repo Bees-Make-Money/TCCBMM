@@ -1,4 +1,5 @@
 if (!tv_is_active()) exit;
+if (!tv_was_active) exit;  
 if (!point_in_rectangle(mouse_x, mouse_y, panel_left, panel_top, panel_left + tv_w, panel_top + tv_h)) exit;
 if (global.interaction_locked || was_locked) exit;
 
@@ -6,9 +7,11 @@ var _on  = scr_flag("tv_on");
 var _con = scr_flag("console_connected");
 var _ctl = scr_flag("controller_connected");
 
-// ---------------- jogador está com um item selecionado ----------------
-if (global.selected_item != "") {
-    var _item     = global.selected_item;
+// item selecionado (se outro evento limpar a seleção no mesmo clique, usa a lembrada)
+var _selected = global.selected_item;
+if (_selected == "") _selected = last_selected;
+if (_selected != "") {
+    var _item     = _selected;
     var _lines    = ["Humm, parece que isso não está certo."];
     var _consumed = false;
 
@@ -78,7 +81,7 @@ else if (tv_phase == "menu") {
             }
             else {
                 // basquete ou carro: a escolha errada
-                instance_create_depth(0, 0, -9999, obj_death);
+               instance_create_depth(0, 0, -9000, obj_tv_death_msg);
             }
             break;
         }

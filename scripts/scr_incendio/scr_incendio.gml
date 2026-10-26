@@ -89,6 +89,8 @@ function scr_make_order_paper_sprite(_labels) {
     var _surf = surface_create(48, 48);
     surface_set_target(_surf);
     draw_clear_alpha(c_black, 0);
+	draw_set_alpha(1);
+    gpu_set_blendmode(bm_normal);
 
     // papel
     draw_set_color(make_color_rgb(222, 205, 160));

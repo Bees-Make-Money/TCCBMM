@@ -1,4 +1,12 @@
-// (sem draw_self: o sprite é só máscara de clique)
+if (!panel_revealed) exit;   // invisível até a lanterna passar
+if (vanish_t > 0) {
+    var _vs  = vanish_t / 30;
+    var _vl  = variable_instance_exists(id, "panel_left") ? panel_left : bbox_left;
+    var _vt  = variable_instance_exists(id, "panel_top")  ? panel_top  : bbox_top;
+    var _vcx = _vl + panel_w / 2;
+    var _vcy = _vt + panel_h / 2;
+    matrix_set(matrix_world, matrix_build(_vcx * (1 - _vs), _vcy * (1 - _vs), 0, 0, 0, 0, _vs, _vs, 1));
+}
 var _px = bbox_left;
 var _py = bbox_top;
 var _w  = panel_w;
@@ -156,3 +164,86 @@ draw_set_alpha(1);
 draw_set_color(c_white);
 draw_set_halign(fa_left);
 draw_set_valign(fa_top);
+// ---------- tampa de madeira que fecha o mecanismo ----------
+var _cvx1 = _px + 16;    // área das duas janelas (mecanismo + fiação)
+var _cvy1 = _py + 48;
+var _cvx2 = _px + 416;
+var _cvy2 = _py + 272;
+
+if (door_t < 0.99) {
+    var _cw  = (_cvx2 - _cvx1) * (1 - door_t);   // a tampa encolhe em direção à dobradiça (esquerda)
+    var _cx2 = _cvx1 + _cw;
+
+    draw_rectangle_color(_cvx1, _cvy1, _cx2, _cvy2, _wood_top, _wood_top, _wood_bot, _wood_bot, false);
+
+    if (_cw > 30) {
+        draw_set_color(_brass_dk);
+        draw_rectangle(_cvx1 + 10, _cvy1 + 10, _cx2 - 10, _cvy2 - 10, true);
+        draw_set_alpha(0.35);
+        draw_set_color(c_black);
+        draw_rectangle(_cvx1 + 14, _cvy1 + 14, _cx2 - 14, _cvy2 - 14, true);
+        draw_set_alpha(1);
+    }
+
+    draw_set_color(_brass);
+    draw_rectangle(_cvx1, _cvy1, _cx2, _cvy2, true);
+
+    // dobradiças
+    draw_set_color(_brass_lt);
+    draw_rectangle(_cvx1 - 3, _cvy1 + 30, _cvx1 + 5, _cvy1 + 50, false);
+    draw_rectangle(_cvx1 - 3, _cvy2 - 50, _cvx1 + 5, _cvy2 - 30, false);
+
+    // puxador e fechadura (só enquanto a tampa está larga)
+    if (_cw > 120) {
+        var _hx = _cx2 - 28;
+        var _hy = (_cvy1 + _cvy2) / 2;
+        draw_set_color(_brass);
+        draw_roundrect_ext(_hx - 6, _hy - 26, _hx + 6, _hy + 26, 6, 6, false);
+        draw_circle_color(_hx, _hy - 26, 7, _brass_lt, _brass_dk, false);
+        draw_circle_color(_hx, _hy + 26, 7, _brass_lt, _brass_dk, false);
+        draw_set_color(_brass_dk);
+        draw_circle(_hx - 22, _hy, 5, false);
+        draw_set_color(c_black);
+        draw_circle(_hx - 22, _hy - 1, 1.6, false);
+        draw_rectangle(_hx - 23, _hy, _hx - 21, _hy + 5, false);
+    }
+
+    // dica piscando quando a tampa está fechada
+    if (door_t < 0.05) {
+        draw_set_font(fnt_testes);
+        draw_set_halign(fa_center);
+        draw_set_valign(fa_middle);
+        draw_set_alpha(0.45 + 0.35 * sin(current_time * 0.004));
+        draw_set_color(_brass_lt);
+        // se ficar grande/pequeno demais na sua fonte, ajuste 0.55
+        draw_text_transformed((_cvx1 + _cvx2) / 2, _cvy2 - 26, "toque para abrir", 0.55, 0.55, 0);
+        draw_set_alpha(1);
+        draw_set_halign(fa_left);
+        draw_set_valign(fa_top);
+    }
+}
+
+// botão de latão para FECHAR (só com a tampa aberta)
+if (door_t > 0.95) {
+    var _bx1 = _px + _w - 30;
+    var _by1 = _py + 8;
+    var _bx2 = _px + _w - 8;
+    var _by2 = _py + 30;
+    draw_rectangle_color(_bx1, _by1, _bx2, _by2, _brass_lt, _brass_lt, _brass, _brass, false);
+    draw_set_color(_brass_dk);
+    draw_rectangle(_bx1, _by1, _bx2, _by2, true);
+    draw_set_color(make_color_rgb(60, 36, 10));
+    draw_line_width(_bx1 + 6, _by1 + 6, _bx2 - 6, _by2 - 6, 2);
+    draw_line_width(_bx1 + 6, _by2 - 6, _bx2 - 6, _by1 + 6, 2);
+}
+
+// clarão dourado da revelação
+if (reveal_t > 0) {
+    gpu_set_blendmode(bm_add);
+    draw_set_alpha(reveal_t / 45 * 0.55);
+    draw_set_color(make_color_rgb(255, 220, 140));
+    draw_rectangle(_px, _py, _px + _w, _py + _h, false);
+    gpu_set_blendmode(bm_normal);
+}
+draw_set_alpha(1);
+matrix_set(matrix_world, matrix_build_identity());

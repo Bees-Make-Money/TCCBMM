@@ -15,7 +15,7 @@ mystery_digit = 7;     // dígito do papel (troque quando quiser)
 // ---------- dificuldade ----------
 aim_speed_x  = 0.045;  // velocidade da mira na horizontal (maior = mais rápido)
 aim_speed_y  = 0.060;  // velocidade da mira na vertical
-keeper_reach = 50;     // alcance do goleiro, em pixels
+keeper_reach = 26;     // alcance do goleiro, em pixels
 shot_frames  = 36;     // duração do chute, em frames
 
 // ---------- estado ----------
@@ -43,10 +43,12 @@ keeper_side = 0;  keeper_hand_x = goal_cx;  keeper_hand_y = gy1 + 50;  keeper_e 
 dive_targets = [
     { side: -1, x: gx1 + 42, y: gy2 - 22 },   // esquerda, baixo
     { side: -1, x: gx1 + 46, y: gy1 + 34 },   // esquerda, alto
-    { side:  0, x: goal_cx,  y: gy1 + 52 },   // centro
+    { side:  0, x: goal_cx,  y: gy1 + 90 },   // centro
     { side:  1, x: gx2 - 46, y: gy1 + 34 },   // direita, alto
     { side:  1, x: gx2 - 42, y: gy2 - 22 }    // direita, baixo
 ];
+keeper_end_x = goal_cx;
+keeper_end_y = gy2;
 
 // torcida (gerada uma vez)
 crowd = [];
@@ -80,22 +82,35 @@ fire = function() {
     keeper_hand_x = _d.x;
     keeper_hand_y = _d.y;
 
+    // pose FINAL do mergulho (a animação do Step usa exatamente esta)
+    keeper_end_x = keeper_hand_x - keeper_side * 115.6;
+    keeper_end_y = min(gy2, keeper_hand_y + 31);
+
+    // onde ficam as mãos, a cabeça e o tronco nessa pose
+    var _ox = keeper_x;
+    var _oy = keeper_y;
+    var _oa = keeper_angle;
+    keeper_x = keeper_end_x;
+    keeper_y = keeper_end_y;
+    keeper_angle = -keeper_side * 75;
+    var _body = [keeper_pt(-10, -126), keeper_pt(10, -126), keeper_pt(0, -88), keeper_pt(0, -60), keeper_pt(0, -34)];
+    keeper_x = _ox;
+    keeper_y = _oy;
+    keeper_angle = _oa;
+
     var _inside = (shot_tx > gx1 + 5 && shot_tx < gx2 - 5 && shot_ty > gy1 + 5 && shot_ty < gy2);
     var _post   = (abs(shot_tx - gx1) <= 5 || abs(shot_tx - gx2) <= 5) && shot_ty > gy1 - 5 && shot_ty <= gy2;
     var _bar    = abs(shot_ty - gy1) <= 5 && shot_tx > gx1 - 5 && shot_tx < gx2 + 5;
 
-    if (_post || _bar) {
-        shot_result = "trave";
+    var _saved = false;
+    for (var b = 0; b < array_length(_body); b++) {
+        if (point_distance(shot_tx, shot_ty, _body[b][0], _body[b][1]) <= keeper_reach) _saved = true;
     }
-    else if (!_inside) {
-        shot_result = "fora";
-    }
-    else if (point_distance(shot_tx, shot_ty, keeper_hand_x, keeper_hand_y) <= keeper_reach) {
-        shot_result = "defendeu";
-    }
-    else {
-        shot_result = "gol";
-    }
+
+    if (_post || _bar)  shot_result = "trave";
+    else if (!_inside)  shot_result = "fora";
+    else if (_saved)    shot_result = "defendeu";
+    else                shot_result = "gol";
 }
 
 finish_shot = function() {
@@ -406,4 +421,15 @@ draw_hud = function() {
         draw_text_transformed(room_width / 2, 330, "Errou " + string(max_misses) + " vezes... acabou.", 1.2, 1.2, 0);
         draw_text_transformed(room_width / 2, 410, "Clique para começar", 1, 1, 0);
     }
+}
+// ---------- tela da morte (só a mensagem, sem reiniciar o jogo) ----------
+death_message = "O homem que morreu em pé";
+death_a    = 0;   // fundo preto
+death_idx  = 0;   // letras já mostradas
+death_hold = 0;   // tempo parado com a frase inteira
+
+// recomeço depois da morte: pula a tela inicial e vai direto para o primeiro pênalti
+if (variable_global_exists("penalty_retry") && global.penalty_retry) {
+    global.penalty_retry = false;
+    start_attempt();
 }

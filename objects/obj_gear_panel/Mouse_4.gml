@@ -1,4 +1,23 @@
 if (global.interaction_locked) exit;
+// ---------- painel escondido, fechado ou aberto ----------
+if (!panel_revealed) exit;   // ainda invisível: não responde
+
+var _cl = variable_instance_exists(id, "panel_left") ? panel_left : bbox_left;
+var _ct = variable_instance_exists(id, "panel_top")  ? panel_top  : bbox_top;
+
+if (!point_in_rectangle(mouse_x, mouse_y, _cl, _ct, _cl + panel_w, _ct + panel_h)) exit;
+
+if (!panel_open) {
+    // fechado: um clique abre a tampa
+    panel_open = true;
+    exit;
+}
+
+// aberto: o botão de latão no canto superior direito fecha a tampa
+if (point_in_rectangle(mouse_x, mouse_y, _cl + panel_w - 30, _ct + 8, _cl + panel_w - 8, _ct + 30)) {
+    panel_open = false;
+    exit;
+}
 
 // posição do clique relativa ao canto superior esquerdo do painel
 var _mx = mouse_x - bbox_left;
@@ -33,6 +52,7 @@ if (global.selected_item != "") {
                 scr_flag_set("wiring_fixed");
                 apply_wiring_state();
                 _consumed = true;
+				 scr_remove_item_from_inventory("Alicate");
                 _lines = ["*clique* Cortei o fio em curto. As faíscas pararam."];
 
                 var _extra = check_solved();

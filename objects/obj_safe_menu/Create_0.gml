@@ -7,7 +7,7 @@ safe_origin = noone
 
 digits = [0, 0, 0, 0]
 target_digits = [0, 0, 0, 0]
-correct_password = [1, 2, 3, 4]
+correct_password = [4, 1, 7, 6]
 
 anim_offset = [0, 0, 0, 0]
 anim_speed = 0.6

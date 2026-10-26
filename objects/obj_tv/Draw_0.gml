@@ -111,16 +111,24 @@ switch (tv_phase) {
         }
     break;
 
-    case "message":
+        case "message":
         draw_set_color(c_black);
         draw_rectangle(_sx, _sy, _sx + _sw, _sy + _sh, false);
-        draw_set_halign(fa_center);
+        draw_set_halign(fa_left);
         draw_set_valign(fa_middle);
         draw_set_color(make_color_rgb(120, 255, 140));
-        var _txt = string_copy(tv_message, 1, floor(msg_index));
+
+        // escala que faz a frase INTEIRA caber na tela (nunca corta o fim)
+        var _full_w = max(1, string_width(tv_message));
+        var _ms     = min(0.9, (_sw - 28) / _full_w);
+        var _tx     = _sx + (_sw - _full_w * _ms) / 2;   // sempre começa no mesmo ponto
+
+        // letras já digitadas (o ceil garante que a última letra apareça)
+        var _n   = min(string_length(tv_message), ceil(msg_index - 0.001));
+        var _txt = string_copy(tv_message, 1, max(0, _n));
         if (((current_time div 400) mod 2) == 0) _txt += "_";
-        draw_text_ext_transformed(_sx + _sw / 2, _sy + _sh / 2, _txt, -1, (_sw - 24) / 0.9, 0.9, 0.9, 0);
-    break;
+        draw_text_transformed(_tx, _sy + _sh / 2, _txt, _ms, _ms, 0);
+		break;
 
     case "menu":
         draw_rectangle_color(_sx, _sy, _sx + _sw, _sy + _sh,

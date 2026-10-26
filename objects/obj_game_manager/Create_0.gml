@@ -45,7 +45,8 @@ global.flags = {
     // Puzzles 3 a 5 (Salas Puzzle - Guimarães)
 	
 	//Sala de Negócios 1
-	
+	ghosts_solved : false,
+
 	
 	
 	//Sala de negócios 2
@@ -59,6 +60,7 @@ global.flags = {
 	gear_panel_solved  : false,
 	wiring_fixed        : false, 
 	negocios_3_unlocked : false,
+	gear_panel_revealed : false,
 	
 	//Sala de negócios 3
 	console_taken        : false,
@@ -69,6 +71,7 @@ global.flags = {
 	penalty_won          : false,
 	paper_digit_taken    : false,
 	uv_lens_acquired     : false,
+	uv_lens_destroyed : false,
 	
 	//Sala do cofre
 	bucket_taken      : false,
@@ -109,10 +112,17 @@ variable_struct_set(global.room_locks, string(rm_sala_negocios_1), {
     req_flag: "paintings_solved",
     msg: "A porta não abre. Algo não quer que eu passe."
 });
+variable_struct_set(global.room_locks, string(rm_sala_negocios_2), {
+    req_flag: "ghosts_solved",
+    msg: "A porta está trancada. Há algo estranho nesta sala que ainda não resolvi."
+});
+
 variable_struct_set(global.room_locks, string(rm_sala_negocios_3), {
     req_flag: "negocios_3_unlocked",
     msg: "A porta está trancada. O painel ao lado parece controlar a fechadura."
 });
 
+
 instance_create_depth(0, 0, -8, obj_uv_light);
+instance_create_depth(0, 0, -9100, obj_item_viewer);
 

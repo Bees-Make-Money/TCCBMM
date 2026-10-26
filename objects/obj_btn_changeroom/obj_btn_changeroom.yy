@@ -10,8 +10,8 @@
   "name":"obj_btn_changeroom",
   "overriddenProperties":[],
   "parent":{
-    "name":"bussines_room1",
-    "path":"folders/Objects/Second_floor/bussines_room1.yy",
+    "name":"objetos_inuteis",
+    "path":"folders/Objects/Second_floor/bussines_room1/objetos_inuteis.yy",
   },
   "parentObjectId":null,
   "persistent":false,

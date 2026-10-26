@@ -55,8 +55,8 @@ switch (st) {
         keeper_e = min(1, _e * 1.6);
         keeper_angle = -keeper_side * 75 * keeper_e;
         keeper_arm   = keeper_e;
-        keeper_x = lerp(goal_cx, keeper_hand_x - keeper_side * 35, keeper_e);
-        keeper_y = lerp(gy2, min(gy2, keeper_hand_y + 55), keeper_e);
+        keeper_x = lerp(goal_cx, keeper_end_x, keeper_e);
+        keeper_y = lerp(gy2, keeper_end_y, keeper_e);
         if (keeper_side == 0) keeper_y -= sin(pi * keeper_e) * 10;
 
         if (shot_t >= shot_frames) finish_shot();
@@ -86,6 +86,7 @@ switch (st) {
 
             // papel com o dígito misterioso (precisa de 1 slot livre no inventário)
             var _paper = scr_make_paper_sprite(mystery_digit);
+			global.mystery_digit = mystery_digit;
             scr_add_item_to_inventory(_paper, "Papel Misterioso");
 
             scr_show_dialog(["Os portões se abriram... eu estou livre!",
@@ -101,12 +102,34 @@ switch (st) {
         }
     break;
 
-    case "lose":
+       case "lose":
         end_timer--;
         if (end_timer <= 0) {
-            var _d = instance_create_depth(0, 0, -9999, obj_death);
-            _d.texto = "O homem que morreu em pé";
-            st = "dead";
+            st = "death_msg";
+            death_a = 0;
+            death_idx = 0;
+            death_hold = 0;
+        }
+    break;
+
+    case "death_msg":
+        if (death_a < 1) {
+            // escurece a tela
+            death_a = min(1, death_a + 0.02);
+        }
+        else if (death_idx < string_length(death_message)) {
+            // digita a frase
+            death_idx += 0.25;
+        }
+        else {
+            // frase inteira na tela: espera um pouco e recomeça SÓ o pênalti
+            death_hold++;
+            if (death_hold >= 150) {
+                global.penalty_retry = true;
+                var _fr = instance_create_depth(0, 0, -9998, obj_fade);
+                _fr.target_room = rm_penaltis;
+                st = "dead";
+            }
         }
     break;
 }

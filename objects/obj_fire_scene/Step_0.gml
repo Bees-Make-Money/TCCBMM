@@ -213,6 +213,7 @@ switch (st) {
                 scr_remove_item_from_inventory("Balde com Água");
                 global.selected_item = "";
                 global.selected_inventory_slot = noone;
+				global.fire_order_labels = order_labels;
                 scr_add_item_to_inventory(scr_make_order_paper_sprite(order_labels), "Papel Chamuscado");
                 scr_flag_set("fire_solved");
                 scr_flag_set("order_paper_taken");

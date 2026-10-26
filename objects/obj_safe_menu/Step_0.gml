@@ -44,6 +44,12 @@ for (var i = 0; i < 4; i++) {
 
 if (is_correct && anim_offset[0] == 0 && anim_offset[1] == 0 && anim_offset[2] == 0 && anim_offset[3] == 0) {
     scr_flag_set("safe_solved");
+	    // a lente da lanterna se desfaz e a lanterna volta ao normal
+    if (scr_flag("uv_lens_acquired") && !scr_flag("uv_lens_destroyed")) {
+        scr_flag_set("uv_lens_destroyed");
+        scr_show_dialog(["A lente da lanterna esquentou na minha mão... e se desfez em pó.",
+                         "A luz voltou ao normal."], "Detetive", c_white);
+    }
 	if (instance_exists(safe_origin)) {
         safe_origin.solved = true;
 		with(safe_origin){
