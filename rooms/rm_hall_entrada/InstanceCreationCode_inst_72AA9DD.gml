@@ -1,4 +1,4 @@
-dialog_lines = ["Ele é extremamente rigoroso"];
+dialog_lines = ["Encontre o pote que me satisfaça"];
 speaker = "???"
 text_color = c_red;
 
