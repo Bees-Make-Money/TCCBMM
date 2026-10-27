@@ -1,0 +1,9 @@
+depth = -50;
+margin = 20;          
+preferred_w = 240;    
+min_w = 150;          
+aspect = 1.6;         
+text_scale = 1.1;     
+box_alpha = 0.7;      
+current = "";
+text_alpha = 0;

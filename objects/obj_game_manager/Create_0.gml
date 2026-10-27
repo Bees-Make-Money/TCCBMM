@@ -28,6 +28,7 @@ global.flags = {
 
     // Puzzle 2 - Quadros (Sclebin)
 	golden_key_taken: false,
+	corridor_door_inspected: false,
     corridor_door_unlocked: false,
 	meeting_papers_read: false,
     flask_taken: false,
@@ -94,6 +95,8 @@ global.flags = {
 
 
 };
+
+scr_build_objectives();
 
 global.room_locks = {};
 variable_struct_set(global.room_locks, string(rm_varanda_superior), {

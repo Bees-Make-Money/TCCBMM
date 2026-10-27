@@ -16,6 +16,10 @@ if (scr_room_has_hud(room)) {
 	if (instance_exists(obj_flashlight)) {
 		instance_destroy(obj_flashlight);
 	}
+	if (instance_exists(obj_objective_box)) {
+		instance_destroy(obj_objective_box)
+	};
+	instance_create_depth(0, 0, -50, obj_objective_box);
 	instance_create_layer(144, 528, "Buttons", obj_room_change_button)
 	instance_create_layer(300, 528, "Buttons", obj_inventory_button)
 	instance_create_layer(0, 0, "Menu", obj_flashlight)
@@ -24,6 +28,7 @@ else {
 	instance_destroy(obj_room_change_button);
 	instance_destroy(obj_inventory_button);
 	instance_destroy(obj_flashlight);
+	instance_destroy(obj_objective_box);
 }
 if (room == rm_corredor_superior && scr_flag("flask_taken")) {
     scr_flag_set("meeting_papers_cleared");

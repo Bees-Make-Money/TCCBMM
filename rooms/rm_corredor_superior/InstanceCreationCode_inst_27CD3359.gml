@@ -4,6 +4,10 @@ text_color = c_white;
 
 required_item = ITEM_CHAVE_DOURADA;
 
+on_interact = function(){
+	scr_flag_set("corridor_door_inspected");
+}
+
 on_item_success = function(){
 	scr_consume_item(ITEM_CHAVE_DOURADA);
 	scr_flag_set("corridor_door_unlocked");

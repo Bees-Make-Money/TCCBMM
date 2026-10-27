@@ -60,3 +60,4 @@ move_axis = function(_dx, _dy, _steps, _use_assist) {
 
 // Cria a escuridão com a luz que acompanha o jogador
 instance_create_depth(0, 0, -1000, obj_player_light);
+instance_create_depth(0, 0, -1000, obj_maze_preview);
