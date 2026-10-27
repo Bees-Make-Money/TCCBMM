@@ -55,7 +55,7 @@ function scr_get_pickup_spawn(_key) {
 
         // ----------- ajuste aqui se precisar -----------
         // área onde os itens podem aparecer (x1, y1, x2, y2), dentro de 816x624
-        var _area = [48, 48, 768, 576];
+        var _area = [120, 120, 150, 165];
 
         // zonas proibidas (x1, y1, x2, y2)
         var _block = [
