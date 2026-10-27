@@ -49,30 +49,48 @@ function scr_draw_gear(_sprite_name, _x, _y, _diameter, _angle = 0, _blend = c_w
 /// Sorteia (uma única vez por partida) a posição dos 4 itens do puzzle e
 /// devolve a posição do item pedido. Assim, se o jogador sair da sala e
 /// voltar, os itens que sobraram continuam no mesmo lugar.
+/// Área do background da sala (onde os itens podem aparecer).
+/// Se o background não começa em (0, 0), mude _bg_x e _bg_y.
+function scr_pickup_bounds() {
+    var _bg_x = 0;
+    var _bg_y = 0;
+    var _bg_w = 816;
+    var _bg_h = 432;
+    return { x1: _bg_x, y1: _bg_y, x2: _bg_x + _bg_w, y2: _bg_y + _bg_h };
+}
+
+/// Sorteia (uma vez por sala) a posição dos 4 itens, sempre DENTRO do background.
 function scr_get_pickup_spawn(_key) {
-    if (!variable_global_exists("pickup_spawns")) {
+    // recalcula quando a sala muda (cada sala tem o seu fundo)
+    if (!variable_global_exists("pickup_spawns") || global.pickup_spawns_room != room) {
         global.pickup_spawns = {};
+        global.pickup_spawns_room = room;
 
-        // ----------- ajuste aqui se precisar -----------
-        // área onde os itens podem aparecer (x1, y1, x2, y2), dentro de 816x624
-        var _area = [120, 120, 150, 165];
+        var _b = scr_pickup_bounds();
+        var _m = 44;   // margem: o item nunca encosta na borda do background
 
-        // zonas proibidas (x1, y1, x2, y2)
+        // área sorteável (dentro do background)
+        var _area = [_b.x1 + _m, _b.y1 + _m, _b.x2 - _m, _b.y2 - _m];
+
+        // zonas proibidas (x1, y1, x2, y2). Ajuste para onde está o seu painel.
         var _block = [
-            [176, 56, 640, 376],   // painel (432x288 em x=192, y=72, com folga)
-            [96, 480, 400, 624]    // botões da interface (y ~ 528)
+            [176, 56, 640, 376]    // painel (432x288 em x=192, y=72)
         ];
 
-        // distância mínima entre dois itens
-        var _min_dist = 110;
-        // -----------------------------------------------
+        var _min_dist = 110;   // distância mínima entre dois itens
 
-        var _keys     = ["gear_large", "gear_medium", "gear_small", "pliers"];
-        var _fallback = [[120, 420], [330, 430], [560, 430], [700, 540]];
-        var _placed   = [];
+        var _keys = ["gear_large", "gear_medium", "gear_small", "pliers"];
+
+        // posições reservas (nos cantos do background) se o sorteio falhar
+        var _fallback = [
+            [_b.x1 + 90, _b.y1 + 90],
+            [_b.x1 + 90, _b.y2 - 90],
+            [_b.x2 - 90, _b.y1 + 90],
+            [_b.x2 - 90, _b.y2 - 90]
+        ];
+        var _placed = [];
 
         for (var k = 0; k < array_length(_keys); k++) {
-            // se o sorteio falhar 500 vezes, usa a posição reserva
             var _px = _fallback[k][0];
             var _py = _fallback[k][1];
 
@@ -112,17 +130,18 @@ function scr_get_pickup_spawn(_key) {
     return global.pickup_spawns[$ _key];
 }
 
-/// Move a instância que chamou para a posição sorteada da chave dada e
-/// garante que o sprite inteiro fique dentro da room.
+/// Move a instância que chamou para a posição sorteada e garante que o
+/// sprite INTEIRO fique dentro do background.
 function scr_place_pickup(_key) {
     var _spawn = scr_get_pickup_spawn(_key);
     x = _spawn.x;
     y = _spawn.y;
 
-    if (bbox_left   < 8)                 x += 8 - bbox_left;
-    if (bbox_right  > room_width - 8)    x -= bbox_right - (room_width - 8);
-    if (bbox_top    < 8)                 y += 8 - bbox_top;
-    if (bbox_bottom > room_height - 8)   y -= bbox_bottom - (room_height - 8);
+    var _b   = scr_pickup_bounds();
+    var _pad = 8;
+    if (bbox_left   < _b.x1 + _pad) x += (_b.x1 + _pad) - bbox_left;
+    if (bbox_right  > _b.x2 - _pad) x -= bbox_right - (_b.x2 - _pad);
+    if (bbox_top    < _b.y1 + _pad) y += (_b.y1 + _pad) - bbox_top;
+    if (bbox_bottom > _b.y2 - _pad) y -= bbox_bottom - (_b.y2 - _pad);
 }
-
 
