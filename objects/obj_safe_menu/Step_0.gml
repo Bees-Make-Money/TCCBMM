@@ -57,6 +57,6 @@ if (is_correct && anim_offset[0] == 0 && anim_offset[1] == 0 && anim_offset[2] =
 		}
     }
     
-    instance_create_layer(x, y + 100, "Instances", obj_iron_key);
+    instance_create_layer(x, y + 100, "Instances", obj_dark_key);
     instance_destroy();
 }

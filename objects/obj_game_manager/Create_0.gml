@@ -85,7 +85,7 @@ global.flags = {
 
     // Puzzle 6 - Cofre
     safe_solved: false,
-    iron_key_taken: false,
+    dark_key_taken: false,
 
     // Puzzle 7 - Biblioteca
     library_unlocked: false

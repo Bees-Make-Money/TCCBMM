@@ -51,7 +51,10 @@ function scr_build_objectives() {
     scr_objective_add("SEJA RÁPIDO",								"paintings_solved");
 
     // ---- Salas Puzzle (Guimarães): acrescentar aqui, na ordem do jogo ----
-    // scr_objective_add("Texto do objetivo.", "flag_que_marca_o_fim", "flag que faz aparecer quando concluída");
+    scr_objective_add("Explore a Sala De Negociações 1", "ghosts_solved")
+	scr_objective_add("Resolva o mecanismo", "negocios_3_unlocked")
+	scr_objective_add("Qual Jogo?", "penalty_won")
+	scr_objective_add("A senha lhe revelará o caminho", "uv_lens_destroyed")
 
     // ---- Cofre e sala final: acrescentem aqui ----
     // scr_objective_add("Abrir o cofre.", "safe_solved");
