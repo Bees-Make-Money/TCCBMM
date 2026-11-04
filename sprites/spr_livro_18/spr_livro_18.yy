@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Books Puzzle",
-    "path":"folders/Sprites/Books Puzzle.yy",
+    "name":"LivrosEstanteEstáticos",
+    "path":"folders/Sprites/Books Puzzle/LivrosEstanteEstáticos.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -17,7 +17,20 @@ if (DEBUG_MODE) {
         scr_change_room(_rooms[global.debug_room_index]);
     }
 	//desliga a escuridão do labirinto
-	    if (keyboard_check_pressed(vk_f6)) {
+	if (keyboard_check_pressed(vk_f6)) {
         global.debug_light_off = !global.debug_light_off;
+    }
+	if(keyboard_check_pressed(vk_f8)){
+		if(instance_exists(obj_dark_key)){
+			instance_destroy(obj_dark_key);
+		}
+		instance_create_layer(300, 300, "Instances", obj_dark_key);
+	}
+	if (keyboard_check_pressed(vk_pageup)) {
+        var _maxf = array_length(scr_debug_final_flags());
+        scr_debug_set_final_stage(min(global.debug_final_stage + 1, _maxf));
+    }
+    if (keyboard_check_pressed(vk_pagedown)) {
+        scr_debug_set_final_stage(0);
     }
  }

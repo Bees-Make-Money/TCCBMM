@@ -10,6 +10,7 @@ global.previous_room = noone
 global.interaction_locked = false
 global.lock_count = 0;
 global.debug_stage = 0;
+global.debug_final_stage = 0;
 global.debug_room_index = -1
 global.debug_light_off = false
 global.room_visits = {}
@@ -87,13 +88,21 @@ global.flags = {
     safe_solved: false,
     dark_key_taken: false,
 
-    // Puzzle 7 - Biblioteca
-    library_unlocked: false
-	
-	
-
-
-
+    // Puzzle 7 - Sala Final
+	final_room_entered: false,   
+    book_2_taken: false,
+    book_7_taken: false,
+    book_11_taken: false,
+    book_18_taken: false,
+    book_25_taken: false,
+    final_books_done: false,      
+    final_sequence_done: false,  
+    hotel_burned: false,           
+    weird_book_spawned: false,
+    weird_book_taken: false,
+    weird_book_read: false,
+    ending_escape: false,
+    ending_sleep: false
 };
 
 scr_build_objectives();

@@ -6,8 +6,8 @@
   "name":"obj_livro_18",
   "overriddenProperties":[],
   "parent":{
-    "name":"Books Puzzle",
-    "path":"folders/Objects/Books Puzzle.yy",
+    "name":"LivrosEstanteEstáticos",
+    "path":"folders/Objects/Books Puzzle/LivrosEstanteEstáticos.yy",
   },
   "parentObjectId":null,
   "persistent":false,

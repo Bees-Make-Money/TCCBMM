@@ -25,3 +25,25 @@ function scr_inventory_has_space() {
     }
     return false;
 }
+function scr_inventory_clear() {
+    for (var i = 0; i < array_length(global.inventory_items); i++) {
+        global.inventory_items[i] = noone;
+    }
+    global.selected_item = "";
+    global.selected_inventory_slot = noone;
+    scr_close_item_menu();
+}
+
+/// Devolve o item do slot (0 = primeiro) ou noone.
+function scr_inventory_get(_slot) {
+    if (_slot < 0 || _slot >= array_length(global.inventory_items)) return noone;
+    return global.inventory_items[_slot];
+}
+
+/// Coloca um item em um slot específico, se estiver livre. Devolve true se colocou.
+function scr_inventory_set(_slot, _sprite, _name) {
+    if (_slot < 0 || _slot >= array_length(global.inventory_items)) return false;
+    if (global.inventory_items[_slot] != noone) return false;
+    global.inventory_items[_slot] = { sprite: _sprite, name: _name };
+    return true;
+}

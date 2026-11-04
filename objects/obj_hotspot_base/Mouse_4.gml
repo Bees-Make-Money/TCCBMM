@@ -1,5 +1,5 @@
 if (global.interaction_locked) exit;
-
+if (variable_instance_exists(id, "click_condition") && is_callable(click_condition) && !click_condition()) exit;
 if (global.selected_item != "") {
     
     if (global.selected_item == required_item) {

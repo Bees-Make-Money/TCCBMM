@@ -19,13 +19,22 @@ function scr_debug_paintings_flags() {
 		"chapter2_shown"
     ];
 }
+function scr_debug_final_flags() {
+    return [
+        "endroom_unlocked",
+        "final_room_entered",
+        "final_sequence_done",
+        "hotel_burned",
+        "ending_sleep"
+    ];
+}
 
 /// Salas pelas quais a tecla F4 passa.
 function scr_debug_rooms() {
     return [rm_hall_entrada, rm_varanda_superior,
-            rm_corredor_superior, rm_sala_reunioes, rm_labirinto_1, rm_labirinto_2, rm_sala_negocios_1];
+            rm_corredor_superior, rm_sala_reunioes, rm_labirinto_1, rm_labirinto_2, rm_sala_negocios_1, rm_sala_cofre, rm_sala_final];
 }
-/// Liga as primeiras _n flags da lista e desliga as demais.
+/// Liga as primeiras _n flags da lista e desliga as demais - Puzzle Dos Quadros
 function scr_debug_set_paintings_stage(_n) {
     var _list = scr_debug_paintings_flags();
     for (var i = 0; i < array_length(_list); i++) {
@@ -33,4 +42,13 @@ function scr_debug_set_paintings_stage(_n) {
     }
     global.debug_stage = _n;
     show_debug_message("[DEBUG] estágio do puzzle dos quadros: " + string(_n) + "/" + string(array_length(_list)));
+}
+//Puzzle Final
+function scr_debug_set_final_stage(_n) {
+    var _list = scr_debug_final_flags();
+    for (var i = 0; i < array_length(_list); i++) {
+        scr_flag_set(_list[i], i < _n);
+    }
+    global.debug_final_stage = _n;
+    show_debug_message("[DEBUG] estágio do puzzle final: " + string(_n) + "/" + string(array_length(_list)));
 }

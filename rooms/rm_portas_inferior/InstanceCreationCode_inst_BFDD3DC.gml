@@ -1,6 +1,3 @@
-if(!instance_exists(obj_slide_puzzle_opener)){
-image_yscale = 3.5
-}
 dialog_lines = [
 "Nunca.",
 "Nunca.",
@@ -9,10 +6,18 @@ dialog_lines = [
 speaker = "??????????????????????";
 text_color = c_red
 
-on_item_success = function(){
-	global.flags.endroom_unlocked = true;
-	
-	dialog_lines = ["Essa sala já está destrancada, devo acessá-la pelo menu de movimentação."];
-	
-	scr_show_dialog("A chave funcionou.... É agora ou nunca.", "Detetive", c_white);
+required_item = ITEM_CHAVE_NEGRA;
+
+on_item_success = function() {
+    scr_consume_item(ITEM_CHAVE_NEGRA);
+    scr_flag_set("endroom_unlocked");
+    dialog_lines = ["Porta já destrancada: devo acessá-la pelo menu de movimentação"];
+    scr_show_dialog(["Funcionou... É agora ou nunca."], "Detetive", c_white);
+};
+
+if (scr_flag("endroom_unlocked")) {
+    dialog_lines = ["Porta já destrancada: devo acessá-la pelo menu de movimentação"];
 }
+
+// Esta porta se sobrepõe ao papel do slide puzzle: só responde quando o papel não existe
+click_condition = function() { return !instance_exists(obj_slide_puzzle_opener); };

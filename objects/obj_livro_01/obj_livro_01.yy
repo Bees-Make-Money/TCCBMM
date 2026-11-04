@@ -6,10 +6,13 @@
   "name":"obj_livro_01",
   "overriddenProperties":[],
   "parent":{
-    "name":"Books Puzzle",
-    "path":"folders/Objects/Books Puzzle.yy",
+    "name":"LivrosEstanteBrilho",
+    "path":"folders/Objects/Books Puzzle/LivrosEstanteBrilho.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_aura_base",
+    "path":"objects/obj_aura_base/obj_aura_base.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

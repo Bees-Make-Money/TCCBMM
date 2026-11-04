@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Books Puzzle",
-    "path":"folders/Sprites/Books Puzzle.yy",
+    "name":"LivrosEstanteBrilho",
+    "path":"folders/Sprites/Books Puzzle/LivrosEstanteBrilho.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
