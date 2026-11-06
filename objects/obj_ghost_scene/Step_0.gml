@@ -162,7 +162,7 @@ switch (st) {
 
             // chegou no detetive: JUMPSCARE
             if (_dist <= catch_radius && _g.state == "active") {
-                trigger_scare(130, true);
+               trigger_scare(scare_len_fatal, true);
                 st = "fail";
                 t = 0;
                 break;
@@ -192,7 +192,7 @@ switch (st) {
     case "fail":
         t++;
         if (t > 120) black_a = min(1, black_a + 0.04);
-        if (t >= 170) {
+      if (t >= scare_len_fatal + 30) {
             if (on_fail == "death") {
                 var _dth = instance_create_depth(0, 0, -9999, obj_death);
                 _dth.texto = death_text;

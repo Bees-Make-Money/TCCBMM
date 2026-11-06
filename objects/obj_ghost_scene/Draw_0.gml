@@ -1,7 +1,7 @@
 // tremor: forte nos sustos, leve quando um fantasma está perto
 var _sh = 0;
 if (scare_t > 0) {
-    _sh = scare_fatal ? 12 : 7;
+       _sh = scare_shake * (scare_fatal ? 1 : 0.6);
 }
 else if (st == "play" && min_dist < 160) {
     _sh = (1 - min_dist / 160) * 2.5;
@@ -68,64 +68,48 @@ if (caption_t > 0 && caption != "") {
     draw_set_alpha(1);
 }
 
-// ---------- JUMPSCARE ----------
+// ---------- JUMPSCARE (versão suave) ----------
 if (scare_t > 0) {
     var _sp = 1 - scare_t / scare_len;
+    var _ov = min(1, scare_t / 10);   // desvanece nos últimos frames
 
-    // fundo preto total
-    draw_set_alpha(1);
+    // escurece a sala (não vira preto total)
+    draw_set_alpha(0.78 * _ov);
     draw_set_color(c_black);
     draw_rectangle(0, 0, room_width, room_height, false);
+    draw_set_alpha(1);
 
-    // o rosto BATE na tela em poucos frames e fica tremendo e mordendo
-    var _ease  = min(1, _sp * 7);
-    var _scale = lerp(2.2, scare_fatal ? 9.5 : 7.2, _ease * _ease);
-    var _jx    = random_range(-14, 14) * (scare_fatal ? 1.4 : 1);
-    var _jy    = random_range(-14, 14);
-    var _jaw   = 0.55 + 0.45 * sin(anim_t * 1.7);
+    // o rosto surge e cresce sem esmagar a tela, e encolhe no final
+    var _ease  = min(1, _sp * 3);
+    var _scale = lerp(2.0, scare_scale_max, _ease) * _ov;
+    var _jx    = random_range(-5, 5);
+    var _jy    = random_range(-5, 5);
+    var _jaw   = 0.45 + 0.25 * sin(anim_t * 0.7);
 
     if (scare_sprite != -1) {
-        // arte própria: cobre a tela inteira, animando
-        var _kover = max(room_width / sprite_get_width(scare_sprite), room_height / sprite_get_height(scare_sprite)) * (0.85 + 0.25 * _ease);
+        var _kover = max(room_width / sprite_get_width(scare_sprite), room_height / sprite_get_height(scare_sprite)) * (0.7 + 0.15 * _ease) * _ov;
         draw_sprite_ext(scare_sprite, (anim_t div 3) mod sprite_get_number(scare_sprite),
-                        room_width / 2 + _jx, room_height / 2 + _jy, _kover, _kover, random_range(-1.5, 1.5), c_white, 1);
+                        room_width / 2 + _jx, room_height / 2 + _jy, _kover, _kover, 0, c_white, 1);
     }
-    else {
+    else if (_scale > 0.05) {
         draw_scare_face(room_width / 2 + _jx, room_height / 2 + _jy, _scale, _jaw);
-        if (scare_fatal && _ease > 0.5) draw_scare_hands();
+        if (scare_fatal && scare_hands && _ease > 0.5) draw_scare_hands();
     }
 
-    // estrobo vermelho no susto fatal
-    if (scare_fatal && ((anim_t div 2) mod 2) == 0) {
-        draw_set_alpha(0.32);
+    // tom vermelho suave no susto fatal (estrobo só se você ligar)
+    if (scare_fatal) {
+        draw_set_alpha((scare_strobe && ((anim_t div 2) mod 2) == 0) ? 0.30 : 0.14);
         draw_set_color(make_color_rgb(190, 10, 10));
         draw_rectangle(0, 0, room_width, room_height, false);
     }
 
-    // linhas de varredura de TV
-    draw_set_alpha(0.18);
+    // linhas de varredura bem leves e pouca estática
+    draw_set_alpha(0.08);
     draw_set_color(c_black);
     for (var sy = 0; sy < room_height; sy += 4) {
         draw_line(0, sy, room_width, sy);
     }
-
-    // estática pesada
-    draw_static(0.7);
-
-    // últimos frames do fatal: corte seco para estática branca
-    if (scare_fatal && scare_t < 14) {
-        draw_set_alpha(1 - scare_t / 14);
-        draw_set_color(c_white);
-        draw_rectangle(0, 0, room_width, room_height, false);
-        draw_static(1);
-    }
-
-    // clarão branco no primeiro instante
-    if (_sp < 0.08) {
-        draw_set_alpha(1 - _sp / 0.08);
-        draw_set_color(c_white);
-        draw_rectangle(0, 0, room_width, room_height, false);
-    }
+    draw_static(scare_static);
     draw_set_alpha(1);
 }
 

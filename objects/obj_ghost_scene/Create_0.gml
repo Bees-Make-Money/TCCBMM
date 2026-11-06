@@ -6,19 +6,25 @@ depth = -5;   // na frente dos fundos da room, atrás do inventário (-10)
 
 // ===================== CONFIGURAÇÃO (mexa aqui) =====================
 ghost_count   = 9;       // de 1 a 9 (as 9 almas do hotel)
-first_spawn   = 45;      // frames até o primeiro fantasma aparecer
-spawn_gap     = 100;     // frames entre um fantasma e o próximo (V1: 170)
-charge_frames = 58;      // frames com a luz em cima para banir (V1: 80)
-
-speed_min       = 0.38;  // velocidade de arrasto, pixels por frame (V1: 0.20)
-speed_max       = 0.58;  //                                        (V1: 0.30)
-ramp_per_banish = 0.07;  // cada fantasma banido deixa os outros 7% mais rápidos
-rush_dist       = 210;   // abaixo dessa distância do detetive o fantasma ACELERA
-rush_mult       = 2.0;   // quantas vezes mais rápido ele fica na reta final
-jump_min        = 38;    // intervalo (frames) entre pulos no escuro
-jump_max        = 85;
-jump_px_min     = 16;    // tamanho de cada pulo, em pixels
-jump_px_max     = 30;
+first_spawn     = 30;     // antes 45
+spawn_gap       = 70;     // antes 100: um fantasma novo a cada ~1,2 s
+charge_frames   = 48;     // antes 58: banir fica um pouco mais rápido, para compensar
+speed_min       = 0.50;   // antes 0.38
+speed_max       = 0.75;   // antes 0.58
+ramp_per_banish = 0.09;   // antes 0.07
+rush_dist = 210;   // abaixo dessa distância do detetive o fantasma ACELERA
+rush_mult       = 2.1;    // antes 2.0
+jump_min        = 34;     // antes 38
+jump_max        = 75;     // antes 85
+jump_px_min     = 18;     // antes 16
+jump_px_max     = 32;     // antes 30
+scare_len_fatal   = 70;     // duração do susto fatal (antes 130)
+scare_len_ambient = 26;     // duração do susto de ambiente (antes 48)
+scare_scale_max   = 5.0;    // tamanho do rosto no auge (antes 9.5 e 7.2)
+scare_shake       = 5;      // tremor da tela (antes 12 e 7)
+scare_static      = 0.25;   // estática durante o susto (antes 0.7)
+scare_hands       = false;  // mãos garrudas no susto fatal (antes ligado)
+scare_strobe      = false;  // estrobo vermelho no susto fatal (antes ligado)
 catch_radius    = 70;    // distância em que o fantasma "pega" o detetive
 
 blackout_min = 420;      // intervalo entre apagões totais (frames)
@@ -28,6 +34,13 @@ blackout_len = 26;       // duração de cada apagão
 ghost_min_alpha = 0.08;  // brilho do corpo no escuro (0 = invisível; os OLHOS aparecem sempre)
 light_radius_override = -1;   // -1 = medir sozinho; ou um raio em pixels (ex.: 120)
 ambient_dark = 0.80;     // escuridão da sala (0 a 1)
+scare_len_fatal   = 70;
+scare_len_ambient = 26;
+scare_scale_max   = 5.0;
+scare_shake       = 5;
+scare_static      = 0.25;
+scare_hands       = false;
+scare_strobe      = false;
 
 on_fail    = "retry";    // "retry" = recomeça a sala  |  "death" = usa o obj_death
 death_text = "Eles nunca deixaram ninguém sair.";
