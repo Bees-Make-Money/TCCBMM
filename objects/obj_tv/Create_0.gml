@@ -23,7 +23,7 @@ card_y0  = screen_y + (screen_h - card_h) / 2;
 // ---------- estado ----------
 tv_phase       = "off";   // off, bars, console, message, menu
 menu_ready     = false;
-tv_message     = "17/07/1994";
+tv_message     = "World Tournament of...";
 msg_index      = 0;
 msg_hold       = 0;
 hover_card     = -1;
