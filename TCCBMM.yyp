@@ -102,6 +102,7 @@
   "name":"TCCBMM",
   "resources":[
     {"id":{"name":"fnt_testes","path":"fonts/fnt_testes/fnt_testes.yy",},},
+    {"id":{"name":"fnt_titulo","path":"fonts/fnt_titulo/fnt_titulo.yy",},},
     {"id":{"name":"obj_aura_base","path":"objects/obj_aura_base/obj_aura_base.yy",},},
     {"id":{"name":"obj_blue_flask","path":"objects/obj_blue_flask/obj_blue_flask.yy",},},
     {"id":{"name":"obj_btn_changeroom","path":"objects/obj_btn_changeroom/obj_btn_changeroom.yy",},},
@@ -167,6 +168,8 @@
     {"id":{"name":"obj_maze_scary_wall","path":"objects/obj_maze_scary_wall/obj_maze_scary_wall.yy",},},
     {"id":{"name":"obj_maze_wall","path":"objects/obj_maze_wall/obj_maze_wall.yy",},},
     {"id":{"name":"obj_mensagem_inventario","path":"objects/obj_mensagem_inventario/obj_mensagem_inventario.yy",},},
+    {"id":{"name":"obj_menu_background","path":"objects/obj_menu_background/obj_menu_background.yy",},},
+    {"id":{"name":"obj_menu_button_base","path":"objects/obj_menu_button_base/obj_menu_button_base.yy",},},
     {"id":{"name":"obj_objective_box","path":"objects/obj_objective_box/obj_objective_box.yy",},},
     {"id":{"name":"obj_painting_aquarium","path":"objects/obj_painting_aquarium/obj_painting_aquarium.yy",},},
     {"id":{"name":"obj_painting_base","path":"objects/obj_painting_base/obj_painting_base.yy",},},
