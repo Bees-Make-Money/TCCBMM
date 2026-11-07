@@ -25,13 +25,24 @@ function scr_inventory_has_space() {
     }
     return false;
 }
+/// Esvazia o inventário inteiro e limpa a seleção e as reservas.
 function scr_inventory_clear() {
     for (var i = 0; i < array_length(global.inventory_items); i++) {
         global.inventory_items[i] = noone;
     }
+    global.inventory_reserved = array_create(array_length(global.inventory_items), false);
     global.selected_item = "";
     global.selected_inventory_slot = noone;
     scr_close_item_menu();
+}
+
+/// Slot (0 = primeiro) em que está o item de nome _name, ou -1.
+function scr_inventory_find(_name) {
+    for (var i = 0; i < array_length(global.inventory_items); i++) {
+        var _it = global.inventory_items[i];
+        if (_it != noone && _it.name == _name) return i;
+    }
+    return -1;
 }
 
 /// Devolve o item do slot (0 = primeiro) ou noone.

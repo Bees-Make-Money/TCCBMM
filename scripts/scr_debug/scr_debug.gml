@@ -23,6 +23,12 @@ function scr_debug_final_flags() {
     return [
         "endroom_unlocked",
         "final_room_entered",
+        "book_2_taken",
+        "book_7_taken",
+        "book_11_taken",
+        "book_18_taken",
+        "book_25_taken",
+        "final_books_done",
         "final_sequence_done",
         "hotel_burned",
         "ending_sleep"
@@ -48,6 +54,10 @@ function scr_debug_set_final_stage(_n) {
     var _list = scr_debug_final_flags();
     for (var i = 0; i < array_length(_list); i++) {
         scr_flag_set(_list[i], i < _n);
+    }
+    if (_n == 0) {                         // zerar: limpa também a estante, o inventário e as reservas
+        scr_final_state_reset();
+        scr_inventory_clear();
     }
     global.debug_final_stage = _n;
     show_debug_message("[DEBUG] estágio do puzzle final: " + string(_n) + "/" + string(array_length(_list)));

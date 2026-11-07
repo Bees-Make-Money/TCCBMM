@@ -1,4 +1,9 @@
 function scr_items(){
+	#macro ITEM_LIVRO_25  "Livro ?????"
+	#macro ITEM_LIVRO_18  "Livro ????"
+	#macro ITEM_LIVRO_11  "Livro ???"
+	#macro ITEM_LIVRO_07  "Livro ??"
+	#macro ITEM_LIVRO_02  "Livro ?"
 	#macro ITEM_CHAVE_NEGRA   "Chave Negra"
 	#macro ITEM_POTE_DENTE "Pote com Dente"
 	#macro ITEM_CHAVE_DOURADA "Chave Dourada"

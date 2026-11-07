@@ -33,4 +33,15 @@ if (DEBUG_MODE) {
     if (keyboard_check_pressed(vk_pagedown)) {
         scr_debug_set_final_stage(0);
     }
+	    // Insert: coloca no inventário os livros do puzzle final que ainda não foram pegos (teste)
+    if (keyboard_check_pressed(vk_insert)) {
+        var _ids = [2, 7, 11, 18, 25];
+        for (var i = 0; i < 5; i++) {
+            var _nm = scr_book_item_name(_ids[i]);
+            if (scr_inventory_find(_nm) == -1 && !scr_flag("book_" + string(_ids[i]) + "_taken")) {
+                scr_add_item_to_inventory(scr_book_icon(_ids[i]), _nm);
+                scr_flag_set("book_" + string(_ids[i]) + "_taken");
+            }
+        }
+    }
  }

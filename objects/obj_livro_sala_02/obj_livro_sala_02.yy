@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"obj_livro_sala_02",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_livro_sala_02",
   "overriddenProperties":[],
@@ -9,7 +11,10 @@
     "name":"LivrosSala",
     "path":"folders/Objects/Books Puzzle/LivrosSala.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_final_book",
+    "path":"objects/obj_final_book/obj_final_book.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

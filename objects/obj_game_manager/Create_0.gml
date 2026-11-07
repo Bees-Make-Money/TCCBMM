@@ -15,6 +15,7 @@ global.debug_room_index = -1
 global.debug_light_off = false
 global.room_visits = {}
 global.inventory_items = array_create(10, noone)
+scr_final_state_reset();
 global.selected_inventory_slot = noone
 global.active_item_menu_buttons = []
 global.selected_item = "";
@@ -90,6 +91,7 @@ global.flags = {
 
     // Puzzle 7 - Sala Final
 	final_room_entered: false,   
+	book_hint_shown: false,         
     book_2_taken: false,
     book_7_taken: false,
     book_11_taken: false,
