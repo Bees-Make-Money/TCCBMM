@@ -1,0 +1,1 @@
+if (locked_by_me) scr_unlock();
