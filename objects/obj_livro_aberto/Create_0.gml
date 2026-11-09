@@ -7,4 +7,4 @@ text_color = c_black;
 
 page_left = 50;        
 page_right = 320;      
-page_top = 45;         
+finapage_top = 45;         

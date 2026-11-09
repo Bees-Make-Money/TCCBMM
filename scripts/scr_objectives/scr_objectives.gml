@@ -55,7 +55,8 @@ function scr_build_objectives() {
 	scr_objective_add("Resolva o mecanismo", "negocios_3_unlocked")
 	scr_objective_add("Qual Jogo?", "penalty_won")
 	scr_objective_add("A senha lhe revelará o caminho", "uv_lens_destroyed")
-
-    // ---- Cofre e sala final: acrescentem aqui ----
-    // scr_objective_add("Abrir o cofre.", "safe_solved");
+	scr_objective_add("Descubra onde usar esta chave", "endroom_unlocked", "dark_key_taken")
+	scr_objective_add("...", "final_sequence_done")
+    // ---- Cofre e sala final ----
+    scr_objective_add("Fuja ou torne-se parte.", "ending_scape", "hotel_burned")
 }

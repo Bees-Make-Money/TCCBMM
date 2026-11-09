@@ -25,3 +25,12 @@ apply_background = function() {
     }
     layer_background_sprite(layer_background_get_id(_layer), _spr);
 };
+
+// ---- Sequência das auras ----
+aura_objects = [obj_livro_06, obj_livro_21, obj_livro_10, obj_livro_01];   // ordem: 6, 21, 10, 1 (F, U, J, A)
+wait_steps = 2 * game_get_speed(gamespeed_fps);      
+gap_steps = 0.5 * game_get_speed(gamespeed_fps);    
+seq_state = 0;       
+seq_timer = 0;
+seq_index = 0;
+seq_wait_anim = false;

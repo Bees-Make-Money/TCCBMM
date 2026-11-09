@@ -94,3 +94,12 @@ function scr_toast(_text) {
     var _t = instance_create_depth(0, 0, -9000, obj_toast);
     _t.text = _text;
 }
+/// A senha FUJA foi aceita: um glitch cobre a tela e, no pico, a sala vira a versão assustadora.
+function scr_final_fuja_accepted() {
+    var _fx = instance_create_depth(0, 0, -1500, obj_glitch_effect);
+    _fx.duration = 60;
+    _fx.on_peak = function() {
+        scr_flag_set("hotel_burned");      // o controller troca o background para a sala escura
+        // Fase 6: aqui começa a contagem de 30 segundos
+    };
+}

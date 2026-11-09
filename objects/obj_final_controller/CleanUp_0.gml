@@ -1,0 +1,1 @@
+if (seq_state == 1 || seq_state == 2) scr_unlock();
