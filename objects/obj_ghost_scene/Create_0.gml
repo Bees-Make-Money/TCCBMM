@@ -57,7 +57,7 @@ reward_item   = "";
 reward_sprite = -1;
 
 // ---- arte própria (opcional): é o caminho para MAIS realismo ----
-ghost_sprite = -1;   // sprite com 9 subimagens (uma por fantasma, de 0 a 8). Origem: centro embaixo
+ghost_sprite =spr_ghosts ;   // sprite com 9 subimagens (uma por fantasma, de 0 a 8). Origem: centro embaixo
 scare_sprite = -1;   // sprite animado do susto (cobre a tela). Origem: centro
 
 lines_intro = ["O livro queimou frio nas minhas mãos... e então o mundo escureceu.",

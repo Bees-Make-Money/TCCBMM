@@ -292,6 +292,7 @@
     {"id":{"name":"spr_gear_medium","path":"sprites/spr_gear_medium/spr_gear_medium.yy",},},
     {"id":{"name":"spr_gear_panel","path":"sprites/spr_gear_panel/spr_gear_panel.yy",},},
     {"id":{"name":"spr_gear_small","path":"sprites/spr_gear_small/spr_gear_small.yy",},},
+    {"id":{"name":"spr_ghosts","path":"sprites/spr_ghosts/spr_ghosts.yy",},},
     {"id":{"name":"spr_golden_key","path":"sprites/spr_golden_key/spr_golden_key.yy",},},
     {"id":{"name":"spr_golden_statue","path":"sprites/spr_golden_statue/spr_golden_statue.yy",},},
     {"id":{"name":"spr_green_flask","path":"sprites/spr_green_flask/spr_green_flask.yy",},},
