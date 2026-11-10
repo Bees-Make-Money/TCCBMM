@@ -162,7 +162,7 @@ switch (st) {
 
             // chegou no detetive: JUMPSCARE
             if (_dist <= catch_radius && _g.state == "active") {
-               trigger_scare(scare_len_fatal, true);
+              trigger_scare(scare_len_fatal, true, _g.style);
                 st = "fail";
                 t = 0;
                 break;

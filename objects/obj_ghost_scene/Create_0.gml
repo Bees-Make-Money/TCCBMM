@@ -46,6 +46,11 @@ on_fail    = "retry";    // "retry" = recomeça a sala  |  "death" = usa o obj_d
 death_text = "Eles nunca deixaram ninguém sair.";
 
 scare_times = [300, 760];   // sustos de ambiente (frames desde o começo da caçada)
+// sprites dos sustos (listas). Vazio = usa o desenho por código
+
+scare_sprites_ambient = [jumpscare_safe];   // susto de ambiente: um é sorteado a cada susto
+scare_sprites_fatal   = [big_jumpscare];   // susto fatal: se tiver 9, usa o do fantasma que te pegou (0 a 8)
+scare_cur = -1;               // sprite do susto que está acontecendo agora
 
 // recompensa ao banir todos (deixe "" para não dar nenhum item)
 reward_item   = "";
@@ -155,12 +160,23 @@ show_caption = function(_txt) {
     caption_t = 170;
 }
 
-trigger_scare = function(_len, _fatal) {
+trigger_scare = function(_len, _fatal, _idx = -1) {
     scare_t = _len;
     scare_len = _len;
     scare_fatal = _fatal;
     static_t = 12;
-    scr_play_sfx("snd_jumpscare");
+
+    // escolhe o sprite deste susto (-1 = desenho por código)
+    scare_cur = -1;
+    var _arr = _fatal ? scare_sprites_fatal : scare_sprites_ambient;
+    if (array_length(_arr) > 0) {
+        if (_fatal && _idx >= 0 && array_length(_arr) > _idx) scare_cur = _arr[_idx];
+        else scare_cur = _arr[irandom(array_length(_arr) - 1)];
+    }
+
+    // som: o do susto de ambiente pode ser outro (snd_jumpscare_ambient)
+    if (!_fatal && asset_get_type("snd_jumpscare_ambient") == asset_sound) scr_play_sfx("snd_jumpscare_ambient");
+    else scr_play_sfx("snd_jumpscare");
 }
 
 // o fantasma dá um pulo na direção do detetive (com falha de imagem)

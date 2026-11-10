@@ -85,12 +85,11 @@ if (scare_t > 0) {
     var _jx    = random_range(-5, 5);
     var _jy    = random_range(-5, 5);
     var _jaw   = 0.45 + 0.25 * sin(anim_t * 0.7);
-
-    if (scare_sprite != -1) {
-        var _kover = max(room_width / sprite_get_width(scare_sprite), room_height / sprite_get_height(scare_sprite)) * (0.7 + 0.15 * _ease) * _ov;
-        draw_sprite_ext(scare_sprite, (anim_t div 3) mod sprite_get_number(scare_sprite),
-                        room_width / 2 + _jx, room_height / 2 + _jy, _kover, _kover, 0, c_white, 1);
-    }
+	if (scare_cur != -1) {
+		var _kover = max(room_width / sprite_get_width(scare_cur), room_height / sprite_get_height(scare_cur)) * (0.7 + 0.15 * _ease) * _ov;
+		draw_sprite_ext(scare_cur, (anim_t div 3) mod sprite_get_number(scare_cur),
+        room_width / 2 + _jx, room_height / 2 + _jy, _kover, _kover, 0, c_white, 1);
+	}
     else if (_scale > 0.05) {
         draw_scare_face(room_width / 2 + _jx, room_height / 2 + _jy, _scale, _jaw);
         if (scare_fatal && scare_hands && _ease > 0.5) draw_scare_hands();
