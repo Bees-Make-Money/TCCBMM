@@ -25,5 +25,13 @@ function scr_get_available_rooms() {
         array_push(forward, { target: target, label: scr_get_room_label(target) });
     }
 
+    // Botões de ação desta sala (não trocam de sala: executam uma função)
+    for (var j = 0; j < array_length(global.menu_actions); j++) {
+        var _a = global.menu_actions[j];
+        if (_a.room == room && _a.show_if()) {
+            array_push(forward, { target: noone, label: _a.label, action: _a.action });
+        }
+    }
+
     return { back: back, forward: forward };
 }

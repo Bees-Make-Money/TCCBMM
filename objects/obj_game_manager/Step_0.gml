@@ -33,6 +33,18 @@ if (DEBUG_MODE) {
     if (keyboard_check_pressed(vk_pagedown)) {
         scr_debug_set_final_stage(0);
     }
+	    // Home: incêndio + contagem de 30 s (pula o painel) | End: coloca a contagem em 16 s (testa o livro bizarro)
+    if (keyboard_check_pressed(vk_home)) {
+        scr_flag_set("hotel_burned");
+        scr_final_countdown_start();
+    }
+    if (keyboard_check_pressed(vk_end)) {
+        global.final_timer = 16 * game_get_speed(gamespeed_fps);
+    }
+	    // Delete: dispara a cena do final 1 direto (teste)
+    if (keyboard_check_pressed(vk_delete)) {
+        scr_start_ending(1);
+    }
 	    // Insert: coloca no inventário os livros do puzzle final que ainda não foram pegos (teste)
     if (keyboard_check_pressed(vk_insert)) {
         var _ids = [2, 7, 11, 18, 25];

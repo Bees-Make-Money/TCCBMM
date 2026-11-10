@@ -1,0 +1,1 @@
+burned_bg = spr_hall_entrada_sombrio;

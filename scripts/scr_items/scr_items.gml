@@ -1,4 +1,5 @@
 function scr_items(){
+	#macro ITEM_LIVRO_SOMBRIO "Livro Sombrio"
 	#macro ITEM_LIVRO_25  "Livro ?????"
 	#macro ITEM_LIVRO_18  "Livro ????"
 	#macro ITEM_LIVRO_11  "Livro ???"

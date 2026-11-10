@@ -24,7 +24,8 @@ for (var i = 0; i < _total_forward; i++) {
     var _btn = instance_create_layer(x, _btn_y, "Menu", obj_room_option_button);
     
     _btn.target_room = _data.target;
-    _btn.room_label  = "Ir para " + _data.label; 
+    _btn.room_label  = "Ir para " + _data.label;
+	 if (variable_struct_exists(_data, "action")) _btn.action = _data.action;
     _btn.depth = depth - 10;
     
     array_push(option_buttons, _btn);

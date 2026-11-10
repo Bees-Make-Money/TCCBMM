@@ -19,7 +19,17 @@ scr_final_state_reset();
 global.selected_inventory_slot = noone
 global.active_item_menu_buttons = []
 global.selected_item = "";
+global.final_timer = -1;
+global.final_timer_active = false;
+global.ending_id = 0; //0 = sem final, 1 = fuga, 2 = morte
 scr_build_room_map()
+global.menu_actions = [];
+array_push(global.menu_actions, {
+    room: rm_hall_entrada,
+    label: "Exterior do Hotel",
+    show_if: function() { return scr_flag("hotel_burned") && !scr_flag("ending_escape"); },
+    action: function() { scr_start_ending(1); }
+});
 
 global.flags = {
     // Puzzle 1 - Estátua (Sclebin)
@@ -111,8 +121,10 @@ scr_build_objectives();
 
 global.room_locks = {};
 variable_struct_set(global.room_locks, string(rm_varanda_superior), {
-    req_flag: "statue_solved", 
-    msg: "Devo terminar de resolver este andar antes de subir"
+    req_flag: function() { return scr_flag("statue_solved") && !scr_flag("hotel_burned"); },
+    msg: function() {
+        return scr_flag("hotel_burned") ? "A escada foi bloqueada. Não consigo mais subir." : "Devo resolver este andar antes de subir";
+    }
 });
 variable_struct_set(global.room_locks, string(rm_sala_final), {
     req_flag: "endroom_unlocked", 

@@ -10,8 +10,8 @@
   "name":"obj_screen_credits",
   "overriddenProperties":[],
   "parent":{
-    "name":"Credits_function",
-    "path":"folders/Objects/Interface/Credits_function.yy",
+    "name":"Books Puzzle",
+    "path":"folders/Objects/Books Puzzle.yy",
   },
   "parentObjectId":null,
   "persistent":false,

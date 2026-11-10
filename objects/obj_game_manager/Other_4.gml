@@ -19,6 +19,9 @@ if (scr_room_has_hud(room)) {
 	if (instance_exists(obj_objective_box)) {
 		instance_destroy(obj_objective_box)
 	};
+	if (global.final_timer_active && !instance_exists(obj_final_countdown)) {
+		instance_create_depth(0, 0, -1100, obj_final_countdown);
+	}
 	instance_create_depth(0, 0, -50, obj_objective_box);
 	instance_create_layer(144, 528, "Buttons", obj_room_change_button)
 	instance_create_layer(300, 528, "Buttons", obj_inventory_button)
@@ -37,3 +40,4 @@ if (room == rm_sala_reunioes && scr_flag("paintings_solved") && !scr_flag("chapt
     scr_flag_set("chapter2_shown");
     instance_create_depth(0, 0, -9999, obj_chapter_title);
 }
+

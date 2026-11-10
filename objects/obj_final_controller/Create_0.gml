@@ -34,3 +34,5 @@ seq_state = 0;
 seq_timer = 0;
 seq_index = 0;
 seq_wait_anim = false;
+// Voltou à sala com o livro bizarro já liberado (aos 15 s) e ainda não pego: ele está no centro
+if (scr_flag("weird_book_spawned") && !scr_flag("weird_book_taken")) scr_spawn_weird_book();

@@ -1,0 +1,1 @@
+burned_bg = spr_porta_inferior_sombria;

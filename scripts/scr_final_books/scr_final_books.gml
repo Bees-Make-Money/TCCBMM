@@ -57,7 +57,7 @@ function scr_book_text(_name) {
             return "Android - DBZ";
         case ITEM_LIVRO_25:
             return "(tons de cinza) / 2";
-        case ITEM_LIVRO_BIZARRO:
+        case ITEM_LIVRO_SOMBRIO:
             return "eu (S)ei que um fina(L) lindo me esp(E)ra com o t(E)m(P)o";
     }
     return "";
@@ -72,6 +72,9 @@ function scr_open_book_from_slot(_slot) {
 
     var _reader = instance_create_depth(0, 0, -500, obj_livro_aberto);
     _reader.book_text = _text;
+
+    // Ler o livro bizarro é o que libera a senha SLEEP
+    if (_item.name == ITEM_LIVRO_SOMBRIO) scr_flag_set("weird_book_read");
 }
 /// Zera o estado da estante (chamado no início do jogo, no reset do puzzle e no debug).
 function scr_final_state_reset() {
@@ -100,6 +103,39 @@ function scr_final_fuja_accepted() {
     _fx.duration = 60;
     _fx.on_peak = function() {
         scr_flag_set("hotel_burned");      // o controller troca o background para a sala escura
-        // Fase 6: aqui começa a contagem de 30 segundos
+        scr_final_countdown_start();       // e a contagem de 30 s começa
     };
+}
+/// Zera TODO o puzzle final (usado na morte por tempo). Mantém a porta destrancada e a dica dos livros.
+function scr_final_reset() {
+    var _flags = [
+        "final_room_entered",
+        "book_2_taken", "book_7_taken", "book_11_taken", "book_18_taken", "book_25_taken",
+        "final_books_done", "final_sequence_done",
+        "hotel_burned",
+        "weird_book_spawned", "weird_book_taken", "weird_book_read",
+        "ending_escape", "ending_sleep"
+    ];
+    for (var i = 0; i < array_length(_flags); i++) {
+        scr_flag_set(_flags[i], false);
+    }
+
+    scr_final_state_reset();         // estante, slots e reservas
+    scr_inventory_clear();           // inventário e seleção
+    global.final_timer = -1;
+    global.final_timer_active = false;
+    global.ending_id = 0;
+}
+
+/// Começa a contagem de 30 segundos.
+function scr_final_countdown_start() {
+    global.final_timer = 30 * game_get_speed(gamespeed_fps);
+    global.final_timer_active = true;
+    if (!instance_exists(obj_final_countdown)) instance_create_depth(0, 0, -1100, obj_final_countdown);
+}
+
+/// Cria o livro bizarro no centro da sala.
+function scr_spawn_weird_book() {
+    if (instance_exists(obj_livro_sombrio)) return;
+    instance_create_layer(room_width /2, 350, "Instances", obj_livro_sombrio)
 }
