@@ -630,3 +630,9 @@ draw_scare_hands = function() {
         }
     }
 }
+// ===== CENÁRIO COM SPRITE NOVO =====
+ambient_dark = 0.65;   // com o cenário novo a sala fica mais visível (era 0.80)
+
+draw_room_art = function() {
+    draw_sprite_stretched(spr_cenario_fantasmas, 0, 0, 0, room_width, room_height);
+}

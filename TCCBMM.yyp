@@ -275,6 +275,7 @@
     {"id":{"name":"spr_backgrounds","path":"sprites/spr_backgrounds/spr_backgrounds.yy",},},
     {"id":{"name":"spr_blue_flask","path":"sprites/spr_blue_flask/spr_blue_flask.yy",},},
     {"id":{"name":"spr_book","path":"sprites/spr_book/spr_book.yy",},},
+    {"id":{"name":"spr_cenario_fantasmas","path":"sprites/spr_cenario_fantasmas/spr_cenario_fantasmas.yy",},},
     {"id":{"name":"spr_chao_labirinto_1","path":"sprites/spr_chao_labirinto_1/spr_chao_labirinto_1.yy",},},
     {"id":{"name":"spr_clock","path":"sprites/spr_clock/spr_clock.yy",},},
     {"id":{"name":"spr_cofre","path":"sprites/spr_cofre/spr_cofre.yy",},},
