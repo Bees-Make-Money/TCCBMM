@@ -1,6 +1,6 @@
 event_inherited();
 x = 50;
-y = 340; 
+y = 270; 
 texto_botao = "Continuar";
 btn_w = 220;
 btn_h = 52;

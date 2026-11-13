@@ -1,4 +1,4 @@
 event_inherited();
 x = 50;
-y = 275; 
+y =340; 
 texto_botao = "Sair";
