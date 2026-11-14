@@ -1,4 +1,3 @@
-//necessário para n ter que sair da sala
 var _state = 0;
 if (scr_flag("ending_sleep")) _state = 2;
 else if (scr_flag("hotel_burned")) _state = 1;
@@ -6,7 +5,17 @@ else if (scr_flag("hotel_burned")) _state = 1;
 if (_state != bg_state) {
     bg_state = _state;
     apply_background();
+
+    // Fundo 3: os 26 livros já estão no fundo, então os objetos de livro somem
+    if (bg_state == 2) {
+        with (obj_aura_base) instance_destroy();
+        with (obj_book_slot) instance_destroy();
+        with (obj_final_book) instance_destroy();
+        with (obj_livro_sombrio) instance_destroy();
+    }
 }
+
+// ---- Teclas 1 a 5 (inclusive as do teclado numérico) abrem o livro do slot correspondente ----
 if (!global.interaction_locked) {
     for (var i = 0; i < 5; i++) {
         if (keyboard_check_pressed(ord("1") + i) || keyboard_check_pressed(vk_numpad1 + i)) {
@@ -14,6 +23,7 @@ if (!global.interaction_locked) {
         }
     }
 }
+
 // ---- Sequência das auras (depois que os 5 livros estão certos) ----
 switch (seq_state) {
     case 0:

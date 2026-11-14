@@ -44,17 +44,20 @@ button_rect = function(_i) {
 
 // Enter: confere a senha
 submit = function() {
+    // FUJA: só vale com os 5 livros certos e uma única vez
     if (typed == "FUJA" && scr_flag("final_books_done") && !scr_flag("hotel_burned")) {
         scr_final_fuja_accepted();
         instance_destroy();
-		instance_destroy(obj_livro_02)
-		instance_destroy(obj_livro_07)
-		instance_destroy(obj_livro_11)
-		instance_destroy(obj_livro_18)
-		instance_destroy(obj_livro_25)
         return;
     }
-    // (a senha SLEEP entra na Fase 8)
+
+    // SLEEP: só vale depois de ler o livro bizarro, com o incêndio ativo e antes de qualquer final
+    if (typed == "SLEEP" && scr_flag("weird_book_read") && scr_flag("hotel_burned") && !scr_flag("ending_sleep")) {
+        scr_final_sleep_accepted();
+        instance_destroy();
+        return;
+    }
+
     bad_timer = 30;
     typed = "";
 };

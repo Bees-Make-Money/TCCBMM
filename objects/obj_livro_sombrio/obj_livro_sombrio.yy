@@ -11,7 +11,10 @@
     "name":"LivrosSala",
     "path":"folders/Objects/Books Puzzle/LivrosSala.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_final_book",
+    "path":"objects/obj_final_book/obj_final_book.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

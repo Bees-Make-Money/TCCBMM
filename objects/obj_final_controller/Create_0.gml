@@ -12,9 +12,14 @@ apply_background = function() {
     if (bg_state == 1){
 		_spr = spr_sala_final_escura;
 		instance_destroy(obj_livro_01);
+		instance_destroy(obj_livro_02);
 		instance_destroy(obj_livro_06);
+		instance_destroy(obj_livro_07);
 		instance_destroy(obj_livro_10);
+		instance_destroy(obj_livro_11);
+		instance_destroy(obj_livro_18);
 		instance_destroy(obj_livro_21);
+		instance_destroy(obj_livro_25);
 	}
     if (bg_state == 2) _spr = spr_sala_final_e_deslocada;
 

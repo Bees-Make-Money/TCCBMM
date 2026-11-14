@@ -12,6 +12,7 @@ phase = 0;                           // 0 escurece, 1 escuro, 2 jumpscare, 3 ima
 timer = 0;
 alpha = 0;
 text_alpha = 0;
+scare_steps = 1.7 * _f;              // duração do jumpscare
 
 scr_lock();                          // nada pode ser clicado durante o final
 instance_destroy(obj_objective_box); // some a caixa de objetivos

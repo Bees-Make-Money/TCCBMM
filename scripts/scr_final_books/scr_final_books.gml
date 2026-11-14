@@ -139,3 +139,12 @@ function scr_spawn_weird_book() {
     if (instance_exists(obj_livro_sombrio)) return;
     instance_create_layer(room_width /2, 350, "Instances", obj_livro_sombrio)
 }
+/// A senha SLEEP foi aceita: a contagem para; um glitch cobre a tela e, no pico, a sala vira a versão 3
+/// (os objetos de livro somem pelo obj_final_controller). Quando o glitch termina, começa a cena do final 2.
+function scr_final_sleep_accepted() {
+    global.final_timer_active = false;                 // a contagem para
+    var _fx = instance_create_depth(0, 0, -1500, obj_glitch_effect);
+    _fx.duration = 50;
+    _fx.on_peak = function() { scr_flag_set("ending_sleep"); };
+    _fx.on_done = function() { scr_start_ending(2); };
+}

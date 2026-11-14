@@ -27,7 +27,7 @@ global.menu_actions = [];
 array_push(global.menu_actions, {
     room: rm_hall_entrada,
     label: "Exterior do Hotel",
-    show_if: function() { return scr_flag("hotel_burned") && !scr_flag("ending_escape"); },
+	show_if: function() { return scr_flag("hotel_burned") && !scr_flag("ending_escape") && !scr_flag("ending_sleep"); },
     action: function() { scr_start_ending(1); }
 });
 
