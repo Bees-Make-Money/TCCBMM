@@ -3,7 +3,7 @@
   "%Name":"redes",
   "bboxMode":0,
   "bbox_bottom":129,
-  "bbox_left":0,
+  "bbox_left":1,
   "bbox_right":271,
   "bbox_top":0,
   "collisionKind":1,
