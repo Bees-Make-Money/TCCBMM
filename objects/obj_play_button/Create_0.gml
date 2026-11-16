@@ -1,3 +1,4 @@
+event_inherited();
 x = 50;  
-y = 115;  
-texto = "Play";
+y = 200;  
+texto_botao = "JOGAR";

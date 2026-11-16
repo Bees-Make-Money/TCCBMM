@@ -1,7 +1,7 @@
 // o scr_show_dialog precisa desta layer, e a rm_penaltis é uma room nova
 if (!layer_exists("Text_Dialogs")) layer_create(-200, "Text_Dialogs");
 
-gx1 = 278;  gx2 = 538;            // postes
+gx1 = 284;  gx2 = 532;          // postes
 gy1 = 210;  gy2 = 330;            // travessão e linha do gol
 goal_cx = (gx1 + gx2) / 2;
 spot_x = 408;  spot_y = 478;      // marca do pênalti
@@ -11,6 +11,36 @@ player_x = 352;  player_y = 552;  // pés do batedor
 goals_needed  = 3;     // gols para ser liberto
 max_misses    = 3;     // errar 3 = "mais do que duas" = morte
 mystery_digit = 7;     // dígito do papel (troque quando quiser)
+
+
+//Sprites
+pspr_bg               = stadium_back;
+pspr_crowd            = torcida_normal;
+pspr_crowd_goal       = torcida_comemorando;
+pspr_net              = redes;
+pspr_posts            = traves;
+pspr_keeper_idle      = stay_goalkepper;
+pspr_keeper_dive_low  = goalkepper_down_left;
+pspr_keeper_dive_high = goalkepper_high_left;
+pspr_keeper_center    = goalkepper_stay_center;
+pspr_player_idle      = batedor_stay;
+pspr_player_kick      = batedor_kick;
+pspr_player_cheer     = batedor_congratulations;
+pspr_player_sad       = batedor_sad;
+pspr_ball             = ball;
+pspr_ball_blur        = ball_rastro;
+pspr_shadow           = sombra;
+pspr_hud_dot          = bolinhas_placar;
+
+keeper_sprite_scale = 0.55;
+keeper_reach_spr    = 46;
+ 
+// alcance da defesa com os sprites do goleiro (em pixels, em volta do ponto das luvas)
+keeper_reach_spr = 40;
+ 
+// o goleiro só usa sprites se os 4 estiverem preenchidos
+keeper_use_sprites = (pspr_keeper_idle != -1 && pspr_keeper_dive_low != -1
+                      && pspr_keeper_dive_high != -1 && pspr_keeper_center != -1);
 
 // ---------- dificuldade ----------
 aim_speed_x  = 0.045;  // velocidade da mira na horizontal (maior = mais rápido)
@@ -47,6 +77,16 @@ dive_targets = [
     { side:  1, x: gx2 - 46, y: gy1 + 34 },   // direita, alto
     { side:  1, x: gx2 - 42, y: gy2 - 22 }    // direita, baixo
 ];
+// com os sprites do goleiro, os pontos das luvas seguem a arte
+if (keeper_use_sprites) {
+    dive_targets = [
+        { side: -1, x: goal_cx - 91, y: gy2 - 24 },
+        { side: -1, x: goal_cx - 82, y: gy2 - 113 },
+        { side:  0, x: goal_cx,      y: gy2 - 43 },
+        { side:  1, x: goal_cx + 82, y: gy2 - 113 },
+        { side:  1, x: goal_cx + 91, y: gy2 - 24 }
+    ];
+}
 keeper_end_x = goal_cx;
 keeper_end_y = gy2;
 
@@ -106,6 +146,11 @@ fire = function() {
     for (var b = 0; b < array_length(_body); b++) {
         if (point_distance(shot_tx, shot_ty, _body[b][0], _body[b][1]) <= keeper_reach) _saved = true;
     }
+	    // com os sprites do goleiro, a defesa vale em volta do ponto das luvas
+    if (keeper_use_sprites) {
+        _saved = (point_distance(shot_tx, shot_ty, keeper_hand_x, keeper_hand_y) <= keeper_reach_spr);
+    }
+
 
     if (_post || _bar)  shot_result = "trave";
     else if (!_inside)  shot_result = "fora";
@@ -142,6 +187,13 @@ keeper_pt = function(_lx, _ly) {
 }
 
 draw_stadium = function() {
+	    if (pspr_bg != -1) {
+        draw_sprite(pspr_bg, 0, 0, 0);
+        var _cs = (st == "result" && shot_result == "gol" && pspr_crowd_goal != -1) ? pspr_crowd_goal : pspr_crowd;
+        // a torcida animada é mais viva que a do fundo: aqui ela é escurecida para casar
+        if (_cs != -1) draw_sprite_ext(_cs, (anim_t div 8) mod sprite_get_number(_cs), 0, 96, 1, 1, 0, make_color_rgb(140, 140, 160), 0.85);
+        return;
+    }
     // céu / fundo
     draw_rectangle_color(0, 0, room_width, 150,
         make_color_rgb(8, 12, 40), make_color_rgb(8, 12, 40),
@@ -189,6 +241,14 @@ draw_stadium = function() {
 }
 
 draw_goal_net = function() {
+	if (pspr_net != -1) {
+        var _n  = sprite_get_number(pspr_net);
+        var _fr = 0;
+        // depois do gol, a rede balança (quadros 1 em diante)
+        if (st == "result" && shot_result == "gol") _fr = min(_n - 1, 1 + floor((80 - result_timer) / 4));
+       draw_sprite(pspr_net, _fr, gx1 - 16, gy1 - 7);
+        return;
+    }
     draw_set_alpha(0.35);
     draw_set_color(c_white);
     for (var xx = gx1; xx <= gx2; xx += 12) draw_line(xx, gy1, xx, gy2);
@@ -197,6 +257,10 @@ draw_goal_net = function() {
 }
 
 draw_goal_posts = function() {
+	 if (pspr_posts != -1) {
+		draw_sprite(pspr_posts, 0, gx1 - 12, gy1 - 10);
+        return;
+    }
     draw_set_color(c_white);
     draw_line_width(gx1, gy2, gx1, gy1, 7);
     draw_line_width(gx2, gy2, gx2, gy1, 7);
@@ -204,6 +268,27 @@ draw_goal_posts = function() {
 }
 
 draw_ball_at = function(_x, _y, _r) {
+	if (pspr_ball != -1) {
+        var _bs  = _r / 9;   // a bola encolhe ao longe (raio 9 -> 6)
+        var _spr = pspr_ball;
+        var _fr  = (st == "shoot") ? ((anim_t div 2) mod sprite_get_number(pspr_ball)) : 0;
+        var _ang = 0;
+ 
+        // sombra enquanto a bola está parada
+        if (pspr_shadow != -1 && st != "shoot" && st != "result") {
+            draw_sprite_ext(pspr_shadow, 0, _x, _y + _r + 1, _bs * 0.4, _bs * 0.4, 0, c_white, 0.6);
+        }
+ 
+        // rastro no meio do voo
+        if (pspr_ball_blur != -1 && st == "shoot" && shot_t > shot_frames * 0.15 && shot_t < shot_frames * 0.85) {
+            _spr = pspr_ball_blur;
+            _fr  = 0;
+            _ang = point_direction(spot_x, spot_y, shot_tx, shot_ty);
+        }
+ 
+        draw_sprite_ext(_spr, _fr, _x, _y, _bs, _bs, _ang, c_white, 1);
+        return;
+    }
     // sombra no chão enquanto a bola está parada
     if (st != "shoot" && st != "result") {
         draw_set_alpha(0.3);
@@ -224,6 +309,28 @@ draw_ball_at = function(_x, _y, _r) {
 
 // goleiro com uniforme azul (estilo seleção italiana de 94)
 draw_keeper_figure = function() {
+	       if (keeper_use_sprites) {
+        var _kx = goal_cx;
+        var _ky = gy2;
+
+        if (pspr_shadow != -1) draw_sprite_ext(pspr_shadow, 0, _kx, _ky, 1.1, 1.1, 0, c_white, 0.5);
+
+        var _after = (st == "result" || st == "win" || st == "lose" || st == "death_msg" || st == "dead");
+
+        if (st == "shoot" || _after) {
+            var _high = (keeper_hand_y < (gy1 + gy2) / 2);
+            var _spr  = (keeper_side == 0) ? pspr_keeper_center : (_high ? pspr_keeper_dive_high : pspr_keeper_dive_low);
+            var _n    = sprite_get_number(_spr);
+            var _fr   = _after ? (_n - 1) : min(_n - 1, floor(keeper_e * _n));
+            // o sprite é do lado esquerdo; para a direita, espelha. A escala diminui o goleiro.
+            draw_sprite_ext(_spr, _fr, _kx, _ky, ((keeper_side == 1) ? -1 : 1) * keeper_sprite_scale, keeper_sprite_scale, 0, c_white, 1);
+        }
+        else {
+            draw_sprite_ext(pspr_keeper_idle, (anim_t div 10) mod sprite_get_number(pspr_keeper_idle), _kx, _ky, keeper_sprite_scale, keeper_sprite_scale, 0, c_white, 1);
+        }
+        return;
+    }
+       
     var _blue  = make_color_rgb(18, 84, 168);
     var _skin  = make_color_rgb(226, 178, 140);
     var _w     = 0.95;
@@ -281,6 +388,39 @@ draw_keeper_figure = function() {
 
 // batedor de costas, uniforme verde e amarelo
 draw_player_figure = function() {
+	if (pspr_player_idle != -1 && pspr_player_kick != -1) {
+        var _spr;
+        var _fr;
+        var _after = (st == "result" || st == "win" || st == "lose" || st == "death_msg" || st == "dead");
+ 
+        if (st == "shoot") {
+            // o chute acontece nos primeiros ~24 frames do lance
+            _spr = pspr_player_kick;
+            _fr  = min(sprite_get_number(_spr) - 1, floor(shot_t / (24 / sprite_get_number(_spr))));
+        }
+        else if (_after) {
+            if (shot_result == "gol" && pspr_player_cheer != -1) {
+                _spr = pspr_player_cheer;
+                _fr  = (anim_t div 8) mod sprite_get_number(_spr);
+            }
+            else if (shot_result != "gol" && pspr_player_sad != -1) {
+                _spr = pspr_player_sad;
+                _fr  = (anim_t div 12) mod sprite_get_number(_spr);
+            }
+            else {
+                _spr = pspr_player_kick;
+                _fr  = sprite_get_number(_spr) - 1;
+            }
+        }
+        else {
+            _spr = pspr_player_idle;
+            _fr  = (anim_t div 12) mod sprite_get_number(_spr);
+        }
+ 
+        if (pspr_shadow != -1) draw_sprite_ext(pspr_shadow, 0, player_x, player_y, 1.3, 1.3, 0, c_white, 0.5);
+        draw_sprite(_spr, _fr, player_x, player_y);
+        return;
+    }
     var _px = player_x;
     var _py = player_y;
     var _sc = 1.15;
@@ -363,8 +503,14 @@ draw_hud = function() {
 
     // 5 tentativas
     for (var i = 0; i < 5; i++) {
-        var _cx = room_width / 2 - 80 + i * 40;
-        var _cy = 36;
+		var _cx = room_width / 2 - 80 + i * 40;
+		var _cy = 36;
+		 if (pspr_hud_dot != -1) {
+            var _hf = 0;
+            if (i < array_length(results)) _hf = (results[i] == "gol") ? 1 : 2;
+            draw_sprite(pspr_hud_dot, _hf, _cx, _cy);
+            continue;
+        }
         draw_set_color(make_color_rgb(70, 70, 80));
         draw_circle(_cx, _cy, 13, false);
         if (i < array_length(results)) {

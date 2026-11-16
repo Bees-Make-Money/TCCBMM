@@ -13,7 +13,10 @@
     "name":"Principal_Screen",
     "path":"folders/Objects/Interface/Principal_Screen.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_menu_button_base",
+    "path":"objects/obj_menu_button_base/obj_menu_button_base.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

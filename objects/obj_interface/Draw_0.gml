@@ -1,4 +1,4 @@
-draw_set_font(fnt_testes);
+draw_set_font(fnt_titulo);
 draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
@@ -11,7 +11,7 @@ draw_set_color(c_black);
 draw_text_transformed(_x + 2 * titulo_escala, titulo_y + 2 * titulo_escala, texto_titulo, titulo_escala, titulo_escala, 0);
 
 // Texto
-draw_set_color(c_white);
+draw_set_color(c_red);
 draw_text_transformed(_x, titulo_y, texto_titulo, titulo_escala, titulo_escala, 0);
 
 draw_set_halign(fa_left);
