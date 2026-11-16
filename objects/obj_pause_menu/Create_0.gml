@@ -17,7 +17,7 @@ locked_by_me = false;
 can_pause = function() {
     if (room == rm_interface || room == rm_creditos) return false;
     if (instance_exists(obj_fade) || instance_exists(obj_death)) return false;
-    if (instance_exists(obj_dialog_box) || instance_exists(obj_inventory_menu) || instance_exists(obj_safe_menu)) return false;
+    if (instance_exists(obj_lore_papers_full) || instance_exists(obj_inventory_menu) || instance_exists(obj_safe_menu)) return false;
     return true;
 }
 

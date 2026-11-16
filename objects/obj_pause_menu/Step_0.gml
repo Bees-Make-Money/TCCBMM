@@ -6,7 +6,7 @@ if (exit_t > 0) {
 }
 
 // ESC (ou P) abre e fecha
-if (keyboard_check_pressed(vk_escape) || keyboard_check_pressed(ord("P"))) {
+if (keyboard_check_pressed(ord("Q"))) {
     if (!open) {
         if (can_pause()) open_menu();
     }
