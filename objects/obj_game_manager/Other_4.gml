@@ -40,4 +40,5 @@ if (room == rm_sala_reunioes && scr_flag("paintings_solved") && !scr_flag("chapt
     scr_flag_set("chapter2_shown");
     instance_create_depth(0, 0, -9999, obj_chapter_title);
 }
-
+// jogo zerado: chegou nos créditos, então o save é apagado e o CONTINUAR fica desativado
+if (room == rm_creditos) scr_delete_save();

@@ -1,3 +1,4 @@
+#macro SAVE_TMP "savegame.tmp"
 // nome do arquivo de save
 #macro SAVE_FILE "savegame.json"
 
@@ -35,10 +36,11 @@ function scr_sprite_for_item(_item_name, _sprite_name) {
     return scr_get_simple_placeholder("item_" + _item_name, 48, 48, make_color_rgb(80, 60, 40), _item_name);
 }
 
-/// Grava o progresso. Devolve true se salvou.
+/// Grava o progresso (um único slot: o save mais novo SOBRESCREVE o mais antigo).
 function scr_save_game() {
     var _data = {
         version: 1,
+        saved_at: date_current_datetime(),
         room: room_get_name(room),
         previous_room: (global.previous_room == noone) ? "" : room_get_name(global.previous_room),
         flags: global.flags,
@@ -48,7 +50,6 @@ function scr_save_game() {
         mystery_digit: variable_global_exists("mystery_digit") ? global.mystery_digit : -1
     };
 
-    // inventário (slot vazio vira 0)
     for (var i = 0; i < array_length(global.inventory_items); i++) {
         var _it = global.inventory_items[i];
         if (_it == noone) {
@@ -59,11 +60,17 @@ function scr_save_game() {
         }
     }
 
+    // 1) escreve num arquivo temporário
     var _json = json_stringify(_data);
     var _buf  = buffer_create(string_byte_length(_json) + 1, buffer_fixed, 1);
     buffer_write(_buf, buffer_string, _json);
-    buffer_save(_buf, SAVE_FILE);
+    buffer_save(_buf, SAVE_TMP);
     buffer_delete(_buf);
+    if (!file_exists(SAVE_TMP)) return false;
+
+    // 2) o save novo substitui o antigo
+    if (file_exists(SAVE_FILE)) file_delete(SAVE_FILE);
+    file_rename(SAVE_TMP, SAVE_FILE);
 
     return file_exists(SAVE_FILE);
 }
@@ -126,4 +133,39 @@ function scr_reset_progress(_delete_save) {
     if (_delete_save && file_exists(SAVE_FILE)) file_delete(SAVE_FILE);
     audio_resume_all();
     game_restart();
+}
+/// Lê o save e devolve { saved_at, room }, ou undefined se não existir/estiver quebrado.
+function scr_save_info() {
+    if (!file_exists(SAVE_FILE)) return undefined;
+    var _info = undefined;
+    try {
+        var _buf  = buffer_load(SAVE_FILE);
+        var _json = buffer_read(_buf, buffer_string);
+        buffer_delete(_buf);
+        var _d = json_parse(_json);
+        if (is_struct(_d) && variable_struct_exists(_d, "room") && variable_struct_exists(_d, "flags")) {
+            _info = { saved_at: variable_struct_exists(_d, "saved_at") ? _d.saved_at : 0, room: _d.room };
+        }
+    }
+    catch (_e) {
+        _info = undefined;
+    }
+    return _info;
+}
+
+/// Existe um jogo salvo que dá para continuar?
+function scr_has_valid_save() {
+    return (scr_save_info() != undefined);
+}
+
+/// Apaga o save (usado quando o jogo é zerado).
+function scr_delete_save() {
+    if (file_exists(SAVE_FILE)) file_delete(SAVE_FILE);
+    if (file_exists(SAVE_TMP))  file_delete(SAVE_TMP);
+}
+
+/// Formata a data do save: "12/11 14:30".
+function scr_format_datetime(_t) {
+    var _mm = string_replace_all(string_format(date_get_minute(_t), 2, 0), " ", "0");
+    return string(date_get_day(_t)) + "/" + string(date_get_month(_t)) + " " + string(date_get_hour(_t)) + ":" + _mm;
 }
