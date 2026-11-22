@@ -16,6 +16,8 @@ swapped    = false;
 
 
 if (has_save) {
+	x =50;
+	y = 200;
 	draw_text_transformed(x + btn_w / 2, y + btn_h / 2 - 8, "CONTINUAR", 0.8, 0.8, 0);
     if (save_info != undefined) {
         draw_text_transformed(x + btn_w / 2, y + btn_h / 2 + 12, "Salvo em " + scr_format_datetime(save_info.saved_at), 0.4, 0.4, 0);
